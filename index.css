@@ -1,12 +1,6 @@
 :root {
   color-scheme: dark;
 }
-.body-container {
-  display: flex;
-  justify-content: center;
-  width: 100vw;
-  height: 100vh;
-}
 .content-container {
     /* A ch is the width of the character 0 in whatever font is being used */
     max-width: 80ch;
