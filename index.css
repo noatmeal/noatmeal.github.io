@@ -1,3 +1,6 @@
+:root {
+  color-scheme: dark;
+}
 .body-container {
   display: flex;
   justify-content: center;
