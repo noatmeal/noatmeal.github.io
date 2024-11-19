@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
-  "scripts": {"local-server": "exec http-server ./docs -o -p 9999"},
+  "scripts": {"local": "exec http-server ./docs -o -p 9999"},
   "keywords": [],
   "author": "Noatmeal",
   "devDependencies": {"http-server": "^14.1.1"}
