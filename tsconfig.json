@@ -1,7 +1,0 @@
-{
-  "include": ["docs/**/*"],
-  "exclude": ["**/*.test.ts"],
-  "compilerOptions": {
-    "target": "es6"
-  }
-}
