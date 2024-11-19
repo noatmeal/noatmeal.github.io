@@ -12,9 +12,8 @@ describe("placeTitle", () => {
   afterEach(() => {
     vi.restoreAllMocks();
   });
-  
-  it(`should append the title to all elements with the '${titleClass}' class`, () => {
 
+  it(`should append the title to all elements with the '${titleClass}' class`, () => {
     document.body.innerHTML = `
       <div class="${titleClass}"></div>
       <div class="${titleClass}"></div>
@@ -32,7 +31,6 @@ describe("placeTitle", () => {
   });
 
   it(`should leave ${notTitleClass} elements unaffected`, () => {
-
     document.body.innerHTML = `
       <div class="${titleClass}"></div>
       <div class="${notTitleClass}"></div>
@@ -45,4 +43,3 @@ describe("placeTitle", () => {
     expect(notTitleElement?.textContent).toBe("");
   });
 });
-

@@ -10,5 +10,5 @@ export default [
   pluginJs.configs.recommended,
   ...tseslint.configs.recommended,
   eslintConfigPrettier,
-  { ignores: [ "**/*.js" ]}
+  { ignores: ["**/*.js"] },
 ];
