@@ -2,6 +2,6 @@
   color-scheme: dark;
 }
 .content-container {
-    /* A ch is the width of the character 0 in whatever font is being used */
-    max-width: 80ch;
+  /* A ch is the width of the character 0 in whatever font is being used */
+  max-width: 80ch;
 }
