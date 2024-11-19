@@ -4,15 +4,15 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "vitest --coverage",
+    "test": "vitest run --coverage",
     "lint": "exec eslint src/**/*.ts vitest.config.ts",
     "prettier": "exec prettier . --write",
     "prettier-lint-config": "exec eslint-config-prettier src/**/*.ts vitest.config.ts",
     "prepare": "husky"
   },
   "keywords": [],
-  "author": "",
-  "license": "ISC",
+  "author": "Noatmeal",
+  "type": "module",
   "devDependencies": {
     "@eslint/js": "^9.15.0",
     "@vitest/coverage-v8": "2.1.5",
