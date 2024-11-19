@@ -1,5 +1,8 @@
-export const HELLO_WORLD = "Hello, World!";
+export const TITLE = "Some of My Notes About Math"
 
-export const hello_world = () => {
-  return HELLO_WORLD;
+export const placeTitle = () => {
+  const titleElements = [...document.getElementsByClassName('title')];
+  titleElements?.map((titleElement) => {
+    titleElement.append(TITLE);
+  })
 };
