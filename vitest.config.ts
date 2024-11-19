@@ -3,6 +3,7 @@ import { defineConfig } from "vitest/config";
 export default defineConfig({
   test: {
     coverage: {
+      include: ["src/**/*.ts"],
       reporter: ["text", "json", "html"],
       thresholds: {
         lines: 100,
@@ -11,5 +12,6 @@ export default defineConfig({
         statements: 100,
       },
     },
+    environment: "jsdom",
   },
 });

@@ -2,3 +2,4 @@ pnpm prettier-lint-config
 pnpm lint
 pnpm prettier
 pnpm test
+pnpm tsc

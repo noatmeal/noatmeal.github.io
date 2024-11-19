@@ -9,8 +9,13 @@
           https://docs.mathjax.org/en/latest/web/start.html
     -->
     <script src=" https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-mml-chtml.min.js "></script>
+    <script type="module">
+      import { placeTitle } from './scripts.js';
+    
+      placeTitle();
+    </script>
     <link rel="stylesheet" href="styles.css" />
-    <title>Some of My Notes About Math</title>
+    <title class="title"></title>
   </head>
   <body class="body-container">
     <div class="content-container">
@@ -44,7 +49,7 @@
         <p>I'm always open to feedback of any kind.</p>
       </details>
       <details>
-        <summary>Some of My Notes About Math</summary>
+        <summary class="title"></summary>
         <ul>
           <li>
             <a href="#">The Recursion Theorem</a>
