@@ -5,12 +5,12 @@
   "main": "index.js",
   "scripts": {
     "test": "vitest run --coverage",
-    "lint": "exec eslint src/**/*.ts vitest.config.ts",
+    "lint": "exec eslint docs/**/*.ts vitest.config.ts",
     "prettier": "exec prettier . --write",
-    "prettier-lint-config": "exec eslint-config-prettier src/**/*.ts vitest.config.ts",
+    "prettier-lint-config": "exec eslint-config-prettier docs/**/*.ts vitest.config.ts",
     "prepare": "husky",
     "tsc": "exec tsc",
-    "local-server": "exec http-server ./src -o -p 9999"
+    "local-server": "exec http-server ./docs -o -p 9999"
   },
   "keywords": [],
   "author": "Noatmeal",
