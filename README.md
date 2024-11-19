@@ -1,1 +1,1 @@
-A personal blog about mathematics.
+A personal blog about mathematics. Contributions are always welcome.
