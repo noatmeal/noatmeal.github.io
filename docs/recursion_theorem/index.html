@@ -1,22 +1,106 @@
 <!doctype html>
 <html lang="en-US">
   <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width" />
-    <link rel="stylesheet" href="styles.css" />
+
+    <!-- Start analytics section -->
+
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-NLMZYQJN0E"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+    
+      gtag('config', 'G-NLMZYQJN0E');
+    </script>
+
+    <!-- End analytics section -->
+
     <!--
-          Use https://www.jsdelivr.com/package/npm/mathjax to get these links.
-          I learned where to find this link from
-          https://docs.mathjax.org/en/latest/web/start.html
+         Use https://www.jsdelivr.com/package/npm/mathjax to get these links.
+         I learned where to find this link from
+         https://docs.mathjax.org/en/latest/web/start.html
     -->
     <script src=" https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-mml-chtml.min.js "></script>
-    <title>Some of My Notes About Math</title>
+
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <meta http-equiv="cache-control" content="no-cache">
+
+    <link rel="stylesheet" href="./styles.css" />
+    
+    <title>The Recursion Theorem</title>
   </head>
   <body>
-    No more being clever. Be bravely repetitive and ugly with your presentation. 
-    Throw mathjax back in and just get after it. The only script you should 
-    ever use is what calls in mathjax. Otherwise just get cracking and accept 
-    that you're only using a markup language with some boilerplate.
-    <p>\( a^n + b^n \neq c^n \) for \( n \geq 3 \) </p>
+    <div class="content-container">
+      <a href="../index.html">Home</a>
+      <h1>The Recursion Theorem</h1>
+
+      <p>
+        Among the first set of tools that one needs to create while working with 
+        ZFC set theory is a theorem that allows for the creation of inductive 
+        definitions. My goal in this post is to do exactly that.
+      </p>
+
+      <h2>Preliminaries</h2>
+      
+        <p>
+          If the following material in this section doesn't make any sense, then 
+          please refer to the first few chapters of a book like 
+          "Naive Set Theory" by Paul R. Halmos. 
+        </p>
+     
+        <p>
+          <b>Definition 1.</b> 
+          \( \mathbb{N} = \{1, 2, ... \} \) and for \( n \in \mathbb{N} \) we 
+          call the image of \( n \) under the successor function \(n^{+}\).
+        </p>
+
+        <p>The second and fourth peano axioms.</p>
+
+      <h2>Statement and Proof</h2>
+
+        <p>
+          <b>Theorem.</b>
+          For any set \( X \), if \( a \in X \) and \( f : X \rightarrow X \), 
+          then there exists a function \( u: \mathbb{N} \rightarrow X \) such 
+          that \( u(1) = a \) and \( u(n^{+}) = f(u(n)) \) for all other natural 
+          numbers \( n \).  
+        </p>
+
+        <p>
+          <b>Proof.</b>
+          Let \( \mathcal{C} \subseteq \mathcal{P} (\mathbb{N} \times X )\) be defined such that 
+          \( (1, a) \in c \) and \( (n^{+}, f(x)) \in c \) whenever \( ( n, x ) \in c \) for all \( c \in \mathcal{C} \). It's clear to see that 
+          \( \mathcal{C} \) is nonempty since \( \mathbb{N} \times X \in C \) and so we can form the intersection of all sets in \( \mathcal{C} \) 
+          which we'll call \( u \). Let \( S \) be the set of all natural numbers such that if \( n \in S \) then there exists \( (n, x) \in u \) and 
+          if \( (n, w), (n,y) \in u\) then \( w = y \). We will prove inductively that \( S = \mathbb{N} \) which establishes \( u \) as a function.
+          Furthermore, given how \( u \) is constructed, such a proof gives us exactly the kind of function we are looking for. 
+        </p>
+        
+        <p>
+          Suppose that \( (1, b) \in u \), \( a \neq b\), and consider the set 
+          \( M = u \setminus \{ (1,b) \} \).  We claim that \( (n^{+}, f(x)) \in M \) whenever \( ( n, x ) \in M \). If that weren't the case then
+          some \( (n^{+}, f(x)) \) would not be present in \( M \) for some \( (n,x) \in M \). Well by the definition of \( M \), for all \( \alpha \)
+          we have that
+          \( (\alpha \in u \land \alpha \neq (1,b)) \rightarrow \alpha \in M \) which implies that if \( \alpha \not\in M \), then 
+          \( \alpha \not\in u \lor \alpha = (1, b) \). Well  it can't be the case that \( (1,b) = (n^{+},f(x)) \) 
+          since \( n^{+} \neq 1 \) for any natural number \( n \). So then we must conclude that \( (n^{+}, f(x)) \not\in u \) 
+          which contradicts \( u \)'s initial construction since \( (n,x) \in u \) by the assumption that \( (n,x) \in M \). Therefore, 
+          since \((1,a) \in M \) and for any other \( (1,b) \in M \) we know that \( a = b \), we conclude that \( 1 \in S \). 
+        </p>
+        
+        <p>
+          Now suppose that \( n \in S \) which implies that there is an \( (n,x) \in u \) for at most one \( x \). It follows from the definition of 
+          \( u \) that \( (n^{+}, f(x)) \in u \). Now if \( n^{+} \) isn't in \( S \), then there exists \( (n^{+}, y) \in u \) such that \( f(x) \neq y \).
+          Consider the set \( J = u \setminus \{(n^{+},y)\} \) and some \( (m, t) \in J \). If \( m = n \), then \( t = x \) since \( n \in S \) and so 
+          \( (n^{+}, f(x)) = (m^{+},f(t)) \in J \). By construction of J, we note that \( \alpha \not\in J \rightarrow (\alpha \not\in u \lor 
+          \alpha = (n^{+},y))\). So if \( m \neq n \), then we know that \( m^{+} \neq n^{+} \) by the fourth Peano axiom and so if 
+          \( (m^{+}, f(t)) \not\in J \) then we must conclude that \( (m^{+}, f(t)) \not\in u \) which is a contradiction to the construction of 
+          \( u \). So \( n^{+} \in S \) and by the principal of mathematical induction we conclude that \( \mathbb{N}  = S \). 
+        </p>
+
+        <p>Put in uniqueness corollary too.</p>
+    </div>
   </body>
 </html>

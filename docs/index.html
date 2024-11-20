@@ -1,15 +1,35 @@
 <!doctype html>
 <html lang="en-US">
   <head>
+
+    <!-- Start analytics section -->
+
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-NLMZYQJN0E"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+    
+      gtag('config', 'G-NLMZYQJN0E');
+    </script>
+
+    <!-- End analytics section -->
+
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width" />
-    <link rel="stylesheet" href="styles.css" />
+    <meta http-equiv="cache-control" content="no-cache">
+
+    <link rel="stylesheet" href="./styles.css" />
+    
     <title>Some of My Notes About Math</title>
+  
   </head>
+ 
   <body>
     <div class="content-container">
       <details>
-        <summary>About</summary>
+        <summary class="summary-large">About</summary>
         <p>
           This is a personal blog where I periodically share some of my notes
           about math.
@@ -21,7 +41,7 @@
         </p>
       </details>
       <details>
-        <summary>Contact</summary>
+        <summary class="summary-large">Contact</summary>
         <p>Please feel free to contact me using the following list:</p>
         <ul>
           <li>noatmeal94@gmail.com</li>
@@ -38,9 +58,10 @@
         <p>I'm always open to feedback of any kind.</p>
       </details>
       <details>
-        <summary>Some of My Notes About Math</summary>
+        <summary class="summary-large">Some of My Notes About Math</summary>
         <p>Latest Entry: <a href="recursion_theorem/index.html">The Recursion Theorem</a></p>
       </details>
     </div>
   </body>
+
 </html>
