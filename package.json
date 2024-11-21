@@ -3,7 +3,9 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
-  "scripts": {"local": "exec live-server ./docs"},
+  "scripts": {
+    "local": "exec live-server ./docs"
+  },
   "keywords": [],
   "author": "Noatmeal",
   "devDependencies": {"live-server": "^1.2.2"}
