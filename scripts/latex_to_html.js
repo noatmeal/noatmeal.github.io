@@ -7,13 +7,16 @@ function processLatexAndRunCommands(basePath) {
         const fooPath = path.resolve(__dirname, '..'); // Assuming foo/scripts is your current directory
         const barPath = path.resolve(fooPath, basePath);
         const latexPath = path.join(barPath, 'latex');
-        const mainHtmlPath = path.join(barPath, 'main.html');
+
         const indexHtmlPath = path.join(barPath, 'index.html');
         const bazScriptPath = path.join(fooPath, 'scripts', 'copy_content.js');
 
         // Run latexmlc command
         console.log(`Running latexmlc in ${latexPath}...`);
         execSync(`latexmlc --dest=../main.html main`, { cwd: latexPath, stdio: 'inherit' });
+
+        // Resolve new path made
+        const mainHtmlPath = path.join(barPath, 'main.html');
 
         // Change to foo directory
         console.log(`Changing to foo directory: ${fooPath}`);
