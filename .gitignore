@@ -6,3 +6,9 @@ node_modules
 *.log
 *.out
 *.synctex.gz
+*.idx
+*.ilg
+*.ind
+*.bbl
+*.bcf
+*.blg

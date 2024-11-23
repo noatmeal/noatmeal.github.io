@@ -11,7 +11,7 @@ After editing the tex documents, be sure to run whatever latex compilation
 process you use on the corresponding `main.tex` file. If any auxiliary files 
 that aren't required for the compilation pop up that aren't the pdf, please add 
 them to the `.gitignore` file. Also be sure to run 
-`node scripts/latex_to_html.js <path to main.tex file>` from the root of the 
+`node scripts/latex_to_html.js <path to post directory>` from the root of the 
 repository to generate the corresponding html for the website.
 
 ## A Coding Standard
@@ -19,8 +19,8 @@ repository to generate the corresponding html for the website.
 Where possible, keep your code's column width constrained to 80 characters or 
 below.
 
-Try not to linebreak math delimiters like \(\) unless you absolutely must to 
-keep the code width below 80 characters.
+Try not to linebreak math delimiters like \(\) unless you absolutely must in 
+order to keep the code width below 80 characters.
 
 # Testing Locally 
 

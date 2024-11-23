@@ -13,7 +13,8 @@ function processLatexAndRunCommands(basePath) {
 
         // Run latexmlc command
         console.log(`Running latexmlc in ${latexPath}...`);
-        execSync(`latexmlc --dest=../main.html main`, { cwd: latexPath, stdio: 'inherit' });
+        execSync(`latexmlc  -dest=../citations.bib.xml citations.bib`, { cwd: latexPath, stdio: 'inherit' });
+        execSync(`latexmlc  --dest=../main.html main`, { cwd: latexPath, stdio: 'inherit' });
 
         // Resolve new path made
         const mainHtmlPath = path.join(barPath, 'main.html');

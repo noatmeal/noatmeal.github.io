@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?latexml searchpaths="/home/ryanoatmeal/Projects/noatmeal.github.io/docs/recursion_theorem/latex"?>
+<?latexml RelaxNGSchema="LaTeXML"?>
+<document xmlns="http://dlmf.nist.gov/LaTeXML">
+  <resource src="LaTeXML.css" type="text/css"/>
+  <bibliography citestyle="numbers" xml:id="bib">
+    <title/>
+    <biblist>
+      <bibentry key="naiiveSet" type="book" xml:id="bib.bib1">
+        <bib-title>Naive set theory</bib-title>
+        <bib-name role="author">
+          <surname>Halmos</surname>
+          <givenname>Paul R.</givenname>
+        </bib-name>
+        <bib-date role="publication">1998</bib-date>
+        <bib-publisher>Springer New York, NY</bib-publisher>
+        <bib-data role="self" type="BibTeX">@book{naiiveSet,
+     title = {Naive Set Theory},
+    author = {Paul R. Halmos},
+      year = {1998},
+ publisher = {Springer New York, NY}}
+</bib-data>
+      </bibentry>
+    </biblist>
+  </bibliography>
+</document>
