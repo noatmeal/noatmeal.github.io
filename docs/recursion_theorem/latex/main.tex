@@ -1,9 +1,8 @@
 \documentclass{article}
 
-\usepackage{xcolor}
+\usepackage[title]{appendix}
 
-% To adjust things like the margin.
-\usepackage[margin=1in]{geometry}
+\usepackage{url}
 
 \usepackage{amsmath}
 \usepackage{amssymb}
@@ -13,14 +12,6 @@
 
 % For math symbols
 \usepackage{amsmath}
-
-% For links to use while reading the pdf on a computer. Also provides nice colors
-% for links.
-\usepackage[unicode]{hyperref}
-\hypersetup{
-    colorlinks=true,
-    linkcolor=blue
-}
 
 \theoremstyle{definition}
 \newtheorem{definition}{Definition}[section]
@@ -53,26 +44,64 @@
 \newcommand*{\lemmaautorefname}{Lemma}
 
 \theoremstyle{plain}
-\newtheorem{corollary}{Corollary}[section]
-\newcommand*{\corollaryautorefname}{Corollary}
-
-\theoremstyle{plain}
 \newtheorem{axiom}{Axiom}[section]
 \newcommand*{\axiomautorefname}{Axiom}
 
+\theoremstyle{plain}
+\newtheorem{corollary}{Corollary}[section]
+\newcommand*{\corollaryautorefname}{Corollary}
+
+\AtBeginDocument{\def\chapterautorefname{Chapter}}%
+\AtBeginDocument{\def\sectionautorefname{Section}}%
+\AtBeginDocument{\def\subsectionautorefname{Section}}%
+\AtBeginDocument{\def\subsubsectionautorefname{Section}}%
+\AtBeginDocument{\def\paragraphautorefname{Paragraph}}%
+
+
+% For links to use while reading the pdf on a computer. Also provides nice 
+% colors for links.
+\usepackage[unicode]{hyperref}
+\hypersetup{
+    colorlinks=true,
+    linkcolor=blue
+}
+% Puts you at top of figures in hyperlinks
+\usepackage[all]{hypcap}
+
 \title{The Recursion Theorem}
-\author{Noatmeal}
+\author{}
+\date{}
 
 \begin{document}
 
 \maketitle
 
+A useful item to have in one's toolbox while working in ZFC set 
+theory\footnote{Short for Zermelo–Fraenkel set theory. See 
+\url{https://en.wikipedia.org/wiki/Zermelo-Fraenkel_set_theory} for more 
+information.} is the ability to create inductive definitions. My goal in this 
+post is to prove a theorem that allows us to do exactly that whenever the 
+proper conditions are present.
+
 \section{Preliminaries}
 
 \begin{definition}
   \( \mathbb{N} = \{1, 2, ... \} \) and \( n^{+} \) is the image of 
-  \( n \in \mathbb{N} \) under the successor function.
+  \( n \in \mathbb{N} \) under the successor function\footnote{If this doesn't 
+  make any sense, then a great review of this topic can be found in 
+  \cite{naiiveSet}. The proof of the main theorem for this post can be found in 
+  that text as well.}.
 \end{definition}
+
+\begin{axiom}
+  For all \( n \in \mathbb{N} \), we have that \( n^{+} \neq 1 \). 
+  \label{axiom:third_peano}
+\end{axiom}
+
+\begin{axiom}
+  If \( n, m \in \mathbb{N}\) and if \( n^{+} = m^{+} \), then \( n = m \).
+  \label{axiom:fourth_peano}
+\end{axiom}
 
 \section{Statement and Theorem}
 
@@ -105,8 +134,8 @@ Well by the definition of \( M \), for all \( \alpha \) we have that
 \( (\alpha \in u \land \alpha \neq (1,b)) \rightarrow \alpha \in M \) which 
 implies that if \( \alpha \not\in M \), then 
 \( \alpha \not\in u \lor \alpha = (1, b) \). Well  it can't be the case that 
-\( (1,b) = (n^{+},f(x)) \) since \( n^{+} \neq 1 \) for any natural number 
-\( n \). So then we must conclude that \( (n^{+}, f(x)) \not\in u \) which 
+\( (1,b) = (n^{+},f(x)) \) by \autoref{axiom:third_peano}. So then we must 
+conclude that \( (n^{+}, f(x)) \not\in u \) which 
 contradicts \( u \)'s initial construction since \( (n,x) \in u \) by the 
 assumption that \( (n,x) \in M \). Therefore, since \((1,a) \in M \) and for any 
 other \( (1,b) \in M \) we know that \( a = b \), we conclude that 
@@ -120,11 +149,11 @@ exists \( (n^{+}, y) \in u \) such that \( f(x) \neq y \). Consider the set
 then \( t = x \) since \( n \in S \) and so 
 \( (n^{+}, f(x)) = (m^{+},f(t)) \in J \). By construction of J, we note that 
 \( \alpha \not\in J \rightarrow (\alpha \not\in u \lor \alpha = (n^{+},y))\). 
-So if \( m \neq n \), then we know that \( m^{+} \neq n^{+} \) by the fourth 
-Peano axiom and so if \( (m^{+}, f(t)) \not\in J \) then we must conclude that 
-\( (m^{+}, f(t)) \not\in u \) which is a contradiction to the construction of 
-\( u \). So \( n^{+} \in S \) and by the principal of mathematical induction we 
-conclude that \( \mathbb{N}  = S \). 
+So if \( m \neq n \), then we know that \( m^{+} \neq n^{+} \) by the 
+\autoref{axiom:fourth_peano} and so if \( (m^{+}, f(t)) \not\in J \) then we 
+must conclude that \( (m^{+}, f(t)) \not\in u \) which is a contradiction to the 
+construction of \( u \). So \( n^{+} \in S \) and by the principal of 
+mathematical induction we conclude that \( \mathbb{N}  = S \). 
 \end{proof}
 
 \begin{corollary}
@@ -142,5 +171,8 @@ conclude that \( \mathbb{N}  = S \).
   then \( F(n^{+}) = f(F(n)) = f(G(n)) = G(n^{+}) \). So by the principle of 
   mathematical induction, \( F \) and \( G \) are the same function.
 \end{proof}
+
+\bibliographystyle{plain}
+\bibliography{citations}
 
 \end{document}
