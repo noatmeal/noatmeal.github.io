@@ -69,7 +69,7 @@
 \usepackage[all]{hypcap}
 
 \title{The Recursion Theorem}
-\author{}
+\author{\url{https://noatmeal.github.io/}}
 \date{}
 
 \begin{document}
@@ -81,29 +81,143 @@ theory\footnote{Short for Zermelo–Fraenkel set theory. See
 \url{https://en.wikipedia.org/wiki/Zermelo-Fraenkel_set_theory} for more 
 information.} is the ability to create inductive definitions. My goal in this 
 post is to prove a theorem that allows us to do exactly that whenever the 
-proper conditions are present.
+proper conditions are present. We'll also work out a couple of fun examples at 
+the end.
 
 \section{Preliminaries}
 
+If the following material doesn't make much sense, then a great review 
+can be found in the first half of \cite{naiiveSet}. The proof of the main 
+theorem for this post can be found in that text as well.
+
+\subsection{Natural Numbers}
+
+We use the following two axioms of ZFC to define the natural numbers.
+
+\begin{axiom}[Infinity]
+  \( \exists x ( \emptyset \in x \land \forall y \in x (y \cup \{y\} \in x))\)
+  \label{axiom:infinity}
+\end{axiom}
+
+\begin{axiom}[Comprehension]
+  \( 
+    \forall v \exists y \forall x 
+    (x \in y \Leftrightarrow x \in v \land \phi(x)) 
+  \) 
+  where 
+  \( \phi \) is a formula that \( y \) is not free in.
+  \label{axiom:comprehension}
+\end{axiom}
+
 \begin{definition}
-  \( \mathbb{N} = \{1, 2, ... \} \) and \( n^{+} \) is the image of 
-  \( n \in \mathbb{N} \) under the successor function\footnote{If this doesn't 
-  make any sense, then a great review of this topic can be found in 
-  \cite{naiiveSet}. The proof of the main theorem for this post can be found in 
-  that text as well.}.
+  A set \( I \) is inductive if and only if \( \emptyset \in I \) and 
+  \( \forall y \in I (y \cup \{y\} \in I )\).
 \end{definition}
 
-\begin{axiom}
+\begin{example}
+  Some examples of elements of an inductive set are 
+  \begin{itemize}
+    \item \( \emptyset \)
+    \item \( \emptyset \cup \{\emptyset\} = \{\emptyset\}\)
+    \item \( 
+            \{\emptyset\} \cup \{\{\emptyset\}\} 
+            = \{\emptyset, \{\emptyset\}\}
+          \)
+    \item \(
+            \{\emptyset, \{\emptyset\}\} \cup \{ \{\emptyset, \{\emptyset\}\} \} 
+            = 
+            \{ \emptyset, \{\emptyset\}, \{\emptyset, \{ \emptyset \} \} \} 
+          \)
+  \end{itemize}
+  \label{example:inductive_set}
+\end{example}
+
+\begin{definition}
+  Let \( J \) be the set who's existence is guaranteed by 
+  \autoref{axiom:infinity}. We use \autoref{axiom:comprehension} to form the set 
+  \[ 
+    \mathbb{N} 
+    = 
+    \{y \in J : \forall I ( I \text{ is inductive} \Rightarrow y \in I )\}
+  \] 
+  One should think of \( \mathbb{N} \) as the ``smallest" inductive set. An 
+  element of \( \mathbb{N} \) is called a \textit{natural number}.
+\end{definition}
+
+\begin{example}
+  \autoref{fig:natural_compact_names} shows a few compact names for natural 
+  numbers that are often used in place of the set theory 
+  notation\footnote{Note that \( 1 \) is considered the first natural number in 
+  this post.}.
+  \label{example:compact_numbers}
+\end{example}
+
+\begin{figure}[h]
+    \centering
+    \begin{tabular}{ c | c }
+      Element of \(\mathbb{N}\)  & Compact Name  \\
+      \hline
+      \(\emptyset\)                                                        & \(1\) \\
+      \(\{\emptyset\}\)                                                    & \( 2 \) \\ 
+      \(\{\emptyset, \{\emptyset\}\}\)                                     & \(3\) \\
+      \(\{ \emptyset, \{\emptyset\}, \{\emptyset, \{ \emptyset \} \} \} \) & 4 
+    \end{tabular} 
+    \caption{Compact names for elements of \( \mathbb{N}\).}
+    \label{fig:natural_compact_names}
+\end{figure}
+
+\begin{definition}
+  The function \( S: \mathbb{N} \rightarrow \mathbb{N} \) defined by 
+  \( S(n) = n \cup \{n\} \) for all \( n \in \mathbb{N} \) is called the 
+  \textit{successor function on} \( \mathbb{N} \). For \( n \in \mathbb{N} \), 
+  we will refer \( S(n) \) as \( n^{+} \).
+\end{definition}
+
+\begin{example}
+  Recall \autoref{example:inductive_set} and \autoref{example:compact_numbers}. 
+  One can deduce that 
+  \begin{itemize}
+    \item \(1^{+} = 2 \)
+    \item \(2^{+} = 3\)
+    \item \(3^{+} = 4\)
+    \item \(4^{+} = 5\)
+    \item \(5^{+} = 6\)
+  \end{itemize}
+  \label{example:successor}
+\end{example}
+
+\subsection{Peano Axioms}
+
+While we prove and refer to the following as theorems, it is common nomenclature 
+to refer to them as \textit{The Five Peano Axioms}.
+
+\begin{theorem}
+  \( 1 \in \mathbb{N} \)
+  \label{thm:first_peano_axiom}
+\end{theorem}
+
+\begin{theorem}
+  If \( n \in \mathbb{N} \), then \( n^{+} \in \mathbb{N} \).
+  \label{thm:second_peano_axiom}
+\end{theorem}
+
+\begin{theorem}[The Principle of Mathematical Induction]
+  If \( S \subseteq \mathbb{N}, 1 \in S,\) and 
+  \(n \in S \Rightarrow n^{+} \in S\), then \( S = \mathbb{N} \).
+  \label{thm:third_peano_axiom}
+\end{theorem}
+
+\begin{theorem}
   For all \( n \in \mathbb{N} \), we have that \( n^{+} \neq 1 \). 
-  \label{axiom:third_peano}
-\end{axiom}
+  \label{thm:fourth_peano_axiom}
+\end{theorem}
 
-\begin{axiom}
-  If \( n, m \in \mathbb{N}\) and if \( n^{+} = m^{+} \), then \( n = m \).
-  \label{axiom:fourth_peano}
-\end{axiom}
+\begin{theorem}
+  If \( n, m \in \mathbb{N}\) and \( n^{+} = m^{+} \), then \( n = m \).
+  \label{thm:fifth_peano_axiom}
+\end{theorem}
 
-\section{Statement and Theorem}
+\section{Existence and Uniqueness}
 
 \begin{theorem}
   For any set \( X \), if \( a \in X \) and \( f : X \rightarrow X \), then 
@@ -119,10 +233,12 @@ such that \( (1, a) \in c \) and \( (n^{+}, f(x)) \in c \) whenever
 \( ( n, x ) \in c \) for all \( c \in \mathcal{C} \). It's clear to see that 
 \( \mathcal{C} \) is nonempty since \( \mathbb{N} \times X \in C \) and so we 
 can form the intersection of all sets in \( \mathcal{C} \) which we'll call 
-\( u \). Let \( S \) be the set of all natural numbers such that if 
+\( u \). 
+
+Let \( S \) be the set of all natural numbers such that if 
 \( n \in S \) then there exists \( (n, x) \in u \) and if 
 \( (n, w), (n,y) \in u\) then \( w = y \). We will prove inductively that 
-\( S = \mathbb{N} \) which establishes \( u \) as a function. Furthermore, 
+\( S = \mathbb{N} \) which establishes that \( u \) is a function. Furthermore, 
 given how \( u \) is constructed, such a proof gives us exactly the kind of 
 function we are looking for. 
 
@@ -134,7 +250,7 @@ Well by the definition of \( M \), for all \( \alpha \) we have that
 \( (\alpha \in u \land \alpha \neq (1,b)) \rightarrow \alpha \in M \) which 
 implies that if \( \alpha \not\in M \), then 
 \( \alpha \not\in u \lor \alpha = (1, b) \). Well  it can't be the case that 
-\( (1,b) = (n^{+},f(x)) \) by \autoref{axiom:third_peano}. So then we must 
+\( (1,b) = (n^{+},f(x)) \) by \autoref{thm:fourth_peano_axiom}. So then we must 
 conclude that \( (n^{+}, f(x)) \not\in u \) which 
 contradicts \( u \)'s initial construction since \( (n,x) \in u \) by the 
 assumption that \( (n,x) \in M \). Therefore, since \((1,a) \in M \) and for any 
@@ -150,7 +266,7 @@ then \( t = x \) since \( n \in S \) and so
 \( (n^{+}, f(x)) = (m^{+},f(t)) \in J \). By construction of J, we note that 
 \( \alpha \not\in J \rightarrow (\alpha \not\in u \lor \alpha = (n^{+},y))\). 
 So if \( m \neq n \), then we know that \( m^{+} \neq n^{+} \) by the 
-\autoref{axiom:fourth_peano} and so if \( (m^{+}, f(t)) \not\in J \) then we 
+\autoref{thm:fifth_peano_axiom} and so if \( (m^{+}, f(t)) \not\in J \) then we 
 must conclude that \( (m^{+}, f(t)) \not\in u \) which is a contradiction to the 
 construction of \( u \). So \( n^{+} \in S \) and by the principal of 
 mathematical induction we conclude that \( \mathbb{N}  = S \). 
@@ -158,6 +274,7 @@ mathematical induction we conclude that \( \mathbb{N}  = S \).
 
 \begin{corollary}
   The function defined in \autoref{recursion} is unique.
+  \label{thm:recursion_uniqueness}
 \end{corollary}
 
 \begin{proof}
@@ -167,10 +284,58 @@ mathematical induction we conclude that \( \mathbb{N}  = S \).
   \( G: \mathbb{N} \rightarrow \mathbb{X} \) where \( F(1) = G(1) = a \), 
   \( F(n^{+}) = f(F(n)) \), and \( G(n^+) = f(G(n)) \) for all natural 
   numbers \( n \). Let \( F(1) = G(1) \) be the base case for an inductive 
-  proof and suppose \( F(n) = G(n) \) for some natural number \( n \). Well 
-  then \( F(n^{+}) = f(F(n)) = f(G(n)) = G(n^{+}) \). So by the principle of 
-  mathematical induction, \( F \) and \( G \) are the same function.
+  proof and suppose that \( F(n) = G(n) \) for some natural number \( n \). 
+  Well then \( F(n^{+}) = f(F(n)) = f(G(n)) = G(n^{+}) \). So by the principle 
+  of mathematical induction, \( F \) and \( G \) are the same function.
 \end{proof}
+
+\section{Examples}
+
+Let's define a couple of familiar concepts by induction.
+
+\begin{definition}[Addition]
+  For any natural number \( n \in \mathbb{N}\), we have 
+  \( n^{+} \in \mathbb{N}\) by \autoref{thm:second_peano_axiom}. If we apply 
+  \( n^{+} \) and \( S \) to \autoref{recursion} and 
+  \autoref{thm:recursion_uniqueness}, we can define a unique function 
+  \( s_n : \mathbb{N} \rightarrow \mathbb{N} \) where
+  \( s_n(1) = n^{+} \) and \(s_n(m^{+}) = s_n(m)^{+}\) for all 
+  \( m \in \mathbb{N} \). For any such function \( s_n \) and 
+  \( m \in \mathbb{N} \), we refer to \( s_n(m) \) as \( n + m \) and call it 
+  the \textit{sum of} \( n \) \textit{and} \( m \). 
+  \label{definition:addition_of_naturals}
+\end{definition}
+
+\begin{example}
+  Recall \autoref{example:successor}. We can see that 
+  \[ 2 + 2 = s_2(2) = s_2(1)^{+} = (2^{+})^{+} = 3^{+} = 4 \]
+  \label{example:two_plus_two}
+\end{example}
+
+\begin{definition}[Multiplication]
+  For every \( n \in \mathbb{N} \), we take 
+  \(s_n: \mathbb{N} \rightarrow \mathbb{N} \) from 
+  \autoref{definition:addition_of_naturals} and we define 
+  \( p_n: \mathbb{N} \rightarrow \mathbb{N} \) where 
+  \( p_n(1) = n \) and \\ \( p_n(m^{+}) = s_n(p_n(m)) = n + p_n(m) \). 
+  We refer to \( p_n(m) \) as \( n \cdot m \). We call 
+  this the \textit{product of} \( n \) \textit{and} \(m\) or \( n \) 
+  \textit{multiplied} by \( m \). 
+\end{definition}
+
+\begin{example}
+  Recall \autoref{example:two_plus_two}. We can see that 
+  \begin{align*}
+    2 \cdot 3 &= 2 + (2 \cdot 2) \\ 
+              &= 2 + (2 + (2 \cdot 1)) \\ 
+              &= 2 + (2 + 2) \\ 
+              &= 2 + 4 \text{ by \autoref{example:two_plus_two}} \\ 
+              &= (2 + 3)^{+} \\ 
+              &= ((2 + 2)^{+})^{+} \\
+              &= (4^{+})^{+} \text{ by \autoref{example:two_plus_two}} \\
+              &= 6
+  \end{align*}
+\end{example}
 
 \bibliographystyle{plain}
 \bibliography{citations}
