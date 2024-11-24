@@ -2,7 +2,7 @@
 <head>
 <meta http-equiv="content-type" content="text/html; charset=UTF-8">
 <title>The Recursion Theorem</title>
-<!--Generated on Sat Nov 23 16:28:27 2024 by LaTeXML (version 0.8.8) http://dlmf.nist.gov/LaTeXML/.-->
+<!--Generated on Sun Nov 24 07:53:42 2024 by LaTeXML (version 0.8.8) http://dlmf.nist.gov/LaTeXML/.-->
 
 <link rel="stylesheet" href="LaTeXML.css" type="text/css">
 <link rel="stylesheet" href="ltx-article.css" type="text/css">
@@ -15,7 +15,7 @@
 <h1 class="ltx_title ltx_title_document">The Recursion Theorem</h1>
 <div class="ltx_authors">
 <span class="ltx_creator ltx_role_author">
-<span class="ltx_personname">
+<span class="ltx_personname"><a href="https://noatmeal.github.io/" title="" class="ltx_ref ltx_url ltx_font_typewriter">https://noatmeal.github.io/</a>
 </span></span>
 </div>
 
@@ -25,44 +25,254 @@ theory<span id="footnote1" class="ltx_note ltx_role_footnote"><sup class="ltx_no
 <a href="https://en.wikipedia.org/wiki/Zermelo-Fraenkel_set_theory" title="" class="ltx_ref ltx_url ltx_font_typewriter">https://en.wikipedia.org/wiki/Zermelo-Fraenkel_set_theory</a> for more
 information.</span></span></span> is the ability to create inductive definitions. My goal in this
 post is to prove a theorem that allows us to do exactly that whenever the
-proper conditions are present.</p>
+proper conditions are present. We’ll also work out a couple of fun examples at
+the end.</p>
 </div>
 <section id="S1" class="ltx_section">
 <h2 class="ltx_title ltx_title_section">
 <span class="ltx_tag ltx_tag_section">1 </span>Preliminaries</h2>
 
+<div id="S1.p1" class="ltx_para">
+<p class="ltx_p">If the following material doesn’t make much sense, then a great review of
+can be found in the first half of <cite class="ltx_cite ltx_citemacro_cite">[<a href="#bib.bib1" title="Naive set theory" class="ltx_ref">1</a>]</cite>. The proof of the main
+theorem for this post can be found in that text as well.</p>
+</div>
+<section id="S1.SS1" class="ltx_subsection">
+<h3 class="ltx_title ltx_title_subsection">
+<span class="ltx_tag ltx_tag_subsection">1.1 </span>Natural Numbers</h3>
+
+<div id="S1.SS1.p1" class="ltx_para">
+<p class="ltx_p">We use the following two axioms of ZFC to define the natural numbers.</p>
+</div>
+<div id="S1.Thmaxiom1" class="ltx_theorem ltx_theorem_axiom">
+<h6 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold">Axiom 1.1</span></span><span class="ltx_text ltx_font_bold"> </span>(Infinity)<span class="ltx_text ltx_font_bold">.</span>
+</h6>
+<div id="S1.Thmaxiom1.p1" class="ltx_para">
+<p class="ltx_p"><math id="S1.Thmaxiom1.p1.m1" class="ltx_Math" alttext="\exists x(\emptyset\in x\land\forall y\in x(y\cup\{y\}\in x))" display="inline"><mrow><mo rspace="0.167em">∃</mo><mrow><mi>x</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mrow><mi mathvariant="normal">∅</mi><mo>∈</mo><mrow><mi>x</mi><mo>∧</mo><mrow><mo rspace="0.167em">∀</mo><mi>y</mi></mrow></mrow><mo>∈</mo><mrow><mi>x</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mrow><mrow><mi>y</mi><mo>∪</mo><mrow><mo stretchy="false">{</mo><mi>y</mi><mo stretchy="false">}</mo></mrow></mrow><mo>∈</mo><mi>x</mi></mrow><mo stretchy="false">)</mo></mrow></mrow></mrow><mo stretchy="false">)</mo></mrow></mrow></mrow></math><span class="ltx_text ltx_font_italic"></span></p>
+</div>
+</div>
+<div id="S1.Thmaxiom2" class="ltx_theorem ltx_theorem_axiom">
+<h6 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold">Axiom 1.2</span></span><span class="ltx_text ltx_font_bold"> </span>(Comprehension)<span class="ltx_text ltx_font_bold">.</span>
+</h6>
+<div id="S1.Thmaxiom2.p1" class="ltx_para">
+<p class="ltx_p"><math id="S1.Thmaxiom2.p1.m1" class="ltx_math_unparsed" alttext="\forall v\exists y\forall x(x\in y\Leftrightarrow x\in v\land\phi(x))" display="inline"><mrow><mo rspace="0.167em">∀</mo><mi>v</mi><mo lspace="0.167em" rspace="0.167em">∃</mo><mi>y</mi><mo lspace="0.167em" rspace="0.167em">∀</mo><mi>x</mi><mrow><mo stretchy="false">(</mo><mi>x</mi><mo>∈</mo><mi>y</mi><mo stretchy="false">⇔</mo><mi>x</mi><mo>∈</mo><mi>v</mi><mo>∧</mo><mi>ϕ</mi><mrow><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo></mrow><mo stretchy="false">)</mo></mrow></mrow></math><span class="ltx_text ltx_font_italic">
+where
+<math id="S1.Thmaxiom2.p1.m2" class="ltx_Math" alttext="\phi" display="inline"><mi>ϕ</mi></math> is a formula that <math id="S1.Thmaxiom2.p1.m3" class="ltx_Math" alttext="y" display="inline"><mi>y</mi></math> is not free in.</span></p>
+</div>
+</div>
 <div id="S1.Thmdefinition1" class="ltx_theorem ltx_theorem_definition">
 <h6 class="ltx_title ltx_runin ltx_title_theorem">
 <span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold">Definition 1.1</span></span><span class="ltx_text ltx_font_bold">.</span>
 </h6>
 <div id="S1.Thmdefinition1.p1" class="ltx_para">
-<p class="ltx_p"><math id="S1.Thmdefinition1.p1.m1" class="ltx_Math" alttext="\mathbb{N}=\{1,2,...\}" display="inline"><mrow><mi>ℕ</mi><mo>=</mo><mrow><mo stretchy="false">{</mo><mn>1</mn><mo>,</mo><mn>2</mn><mo>,</mo><mi mathvariant="normal">…</mi><mo stretchy="false">}</mo></mrow></mrow></math> and <math id="S1.Thmdefinition1.p1.m2" class="ltx_Math" alttext="n^{+}" display="inline"><msup><mi>n</mi><mo>+</mo></msup></math> is the image of
-<math id="S1.Thmdefinition1.p1.m3" class="ltx_Math" alttext="n\in\mathbb{N}" display="inline"><mrow><mi>n</mi><mo>∈</mo><mi>ℕ</mi></mrow></math> under the successor function<span id="footnote2" class="ltx_note ltx_role_footnote"><sup class="ltx_note_mark">2</sup><span class="ltx_note_outer"><span class="ltx_note_content"><sup class="ltx_note_mark">2</sup><span class="ltx_tag ltx_tag_note">2</span>If this doesn’t
-make any sense, then a great review of this topic can be found in
-<cite class="ltx_cite ltx_citemacro_cite">[<a href="#bib.bib1" title="Naive set theory" class="ltx_ref">1</a>]</cite>. The proof of the main theorem for this post can be found in
-that text as well.</span></span></span>.</p>
+<p class="ltx_p">A set <math id="S1.Thmdefinition1.p1.m1" class="ltx_Math" alttext="I" display="inline"><mi>I</mi></math> is inductive if and only if <math id="S1.Thmdefinition1.p1.m2" class="ltx_Math" alttext="\emptyset\in I" display="inline"><mrow><mi mathvariant="normal">∅</mi><mo>∈</mo><mi>I</mi></mrow></math> and
+<math id="S1.Thmdefinition1.p1.m3" class="ltx_Math" alttext="\forall y\in I(y\cup\{y\}\in I)" display="inline"><mrow><mrow><mo rspace="0.167em">∀</mo><mi>y</mi></mrow><mo>∈</mo><mrow><mi>I</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mrow><mrow><mi>y</mi><mo>∪</mo><mrow><mo stretchy="false">{</mo><mi>y</mi><mo stretchy="false">}</mo></mrow></mrow><mo>∈</mo><mi>I</mi></mrow><mo stretchy="false">)</mo></mrow></mrow></mrow></math>.</p>
 </div>
 </div>
-<div id="S1.Thmaxiom1" class="ltx_theorem ltx_theorem_axiom">
+<div id="S1.Thmexample1" class="ltx_theorem ltx_theorem_example">
 <h6 class="ltx_title ltx_runin ltx_title_theorem">
-<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold">Axiom 1.1</span></span><span class="ltx_text ltx_font_bold">.</span>
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold">Example 1.1</span></span><span class="ltx_text ltx_font_bold">.</span>
 </h6>
-<div id="S1.Thmaxiom1.p1" class="ltx_para">
-<p class="ltx_p"><span class="ltx_text ltx_font_italic">For all <math id="S1.Thmaxiom1.p1.m1" class="ltx_Math" alttext="n\in\mathbb{N}" display="inline"><mrow><mi>n</mi><mo>∈</mo><mi>ℕ</mi></mrow></math>, we have that <math id="S1.Thmaxiom1.p1.m2" class="ltx_Math" alttext="n^{+}\neq 1" display="inline"><mrow><msup><mi>n</mi><mo>+</mo></msup><mo>≠</mo><mn>1</mn></mrow></math>.</span></p>
+<div id="S1.Thmexample1.p1" class="ltx_para">
+<p class="ltx_p">Some examples of elements of an inductive set are</p>
+<ul id="S1.I1" class="ltx_itemize">
+<li id="S1.I1.i1" class="ltx_item" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">•</span> 
+<div id="S1.I1.i1.p1" class="ltx_para">
+<p class="ltx_p"><math id="S1.I1.i1.p1.m1" class="ltx_Math" alttext="\emptyset" display="inline"><mi mathvariant="normal">∅</mi></math></p>
+</div>
+</li>
+<li id="S1.I1.i2" class="ltx_item" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">•</span> 
+<div id="S1.I1.i2.p1" class="ltx_para">
+<p class="ltx_p"><math id="S1.I1.i2.p1.m1" class="ltx_Math" alttext="\emptyset\cup\{\emptyset\}=\{\emptyset\}" display="inline"><mrow><mrow><mi mathvariant="normal">∅</mi><mo>∪</mo><mrow><mo stretchy="false">{</mo><mi mathvariant="normal">∅</mi><mo stretchy="false">}</mo></mrow></mrow><mo>=</mo><mrow><mo stretchy="false">{</mo><mi mathvariant="normal">∅</mi><mo stretchy="false">}</mo></mrow></mrow></math></p>
+</div>
+</li>
+<li id="S1.I1.i3" class="ltx_item" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">•</span> 
+<div id="S1.I1.i3.p1" class="ltx_para">
+<p class="ltx_p"><math id="S1.I1.i3.p1.m1" class="ltx_Math" alttext="\{\emptyset\}\cup\{\{\emptyset\}\}=\{\emptyset,\{\emptyset\}\}" display="inline"><mrow><mrow><mrow><mo stretchy="false">{</mo><mi mathvariant="normal">∅</mi><mo stretchy="false">}</mo></mrow><mo>∪</mo><mrow><mo stretchy="false">{</mo><mrow><mo stretchy="false">{</mo><mi mathvariant="normal">∅</mi><mo stretchy="false">}</mo></mrow><mo stretchy="false">}</mo></mrow></mrow><mo>=</mo><mrow><mo stretchy="false">{</mo><mi mathvariant="normal">∅</mi><mo>,</mo><mrow><mo stretchy="false">{</mo><mi mathvariant="normal">∅</mi><mo stretchy="false">}</mo></mrow><mo stretchy="false">}</mo></mrow></mrow></math></p>
+</div>
+</li>
+<li id="S1.I1.i4" class="ltx_item" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">•</span> 
+<div id="S1.I1.i4.p1" class="ltx_para">
+<p class="ltx_p"><math id="S1.I1.i4.p1.m1" class="ltx_Math" alttext="\{\emptyset,\{\emptyset\}\}\cup\{\{\emptyset,\{\emptyset\}\}\}=\{\emptyset,\{%
+\emptyset\},\{\emptyset,\{\emptyset\}\}\}" display="inline"><mrow><mrow><mrow><mo stretchy="false">{</mo><mi mathvariant="normal">∅</mi><mo>,</mo><mrow><mo stretchy="false">{</mo><mi mathvariant="normal">∅</mi><mo stretchy="false">}</mo></mrow><mo stretchy="false">}</mo></mrow><mo>∪</mo><mrow><mo stretchy="false">{</mo><mrow><mo stretchy="false">{</mo><mi mathvariant="normal">∅</mi><mo>,</mo><mrow><mo stretchy="false">{</mo><mi mathvariant="normal">∅</mi><mo stretchy="false">}</mo></mrow><mo stretchy="false">}</mo></mrow><mo stretchy="false">}</mo></mrow></mrow><mo>=</mo><mrow><mo stretchy="false">{</mo><mi mathvariant="normal">∅</mi><mo>,</mo><mrow><mo stretchy="false">{</mo><mi mathvariant="normal">∅</mi><mo stretchy="false">}</mo></mrow><mo>,</mo><mrow><mo stretchy="false">{</mo><mi mathvariant="normal">∅</mi><mo>,</mo><mrow><mo stretchy="false">{</mo><mi mathvariant="normal">∅</mi><mo stretchy="false">}</mo></mrow><mo stretchy="false">}</mo></mrow><mo stretchy="false">}</mo></mrow></mrow></math></p>
+</div>
+</li>
+</ul>
 </div>
 </div>
-<div id="S1.Thmaxiom2" class="ltx_theorem ltx_theorem_axiom">
+<div id="S1.Thmdefinition2" class="ltx_theorem ltx_theorem_definition">
 <h6 class="ltx_title ltx_runin ltx_title_theorem">
-<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold">Axiom 1.2</span></span><span class="ltx_text ltx_font_bold">.</span>
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold">Definition 1.2</span></span><span class="ltx_text ltx_font_bold">.</span>
 </h6>
-<div id="S1.Thmaxiom2.p1" class="ltx_para">
-<p class="ltx_p"><span class="ltx_text ltx_font_italic">If <math id="S1.Thmaxiom2.p1.m1" class="ltx_Math" alttext="n,m\in\mathbb{N}" display="inline"><mrow><mrow><mi>n</mi><mo>,</mo><mi>m</mi></mrow><mo>∈</mo><mi>ℕ</mi></mrow></math> and if <math id="S1.Thmaxiom2.p1.m2" class="ltx_Math" alttext="n^{+}=m^{+}" display="inline"><mrow><msup><mi>n</mi><mo>+</mo></msup><mo>=</mo><msup><mi>m</mi><mo>+</mo></msup></mrow></math>, then <math id="S1.Thmaxiom2.p1.m3" class="ltx_Math" alttext="n=m" display="inline"><mrow><mi>n</mi><mo>=</mo><mi>m</mi></mrow></math>.</span></p>
+<div id="S1.Thmdefinition2.p1" class="ltx_para">
+<p class="ltx_p">Let <math id="S1.Thmdefinition2.p1.m1" class="ltx_Math" alttext="J" display="inline"><mi>J</mi></math> be the set who’s existence is guaranteed by
+<a href="#S1.Thmaxiom1" title="Axiom 1.1 (Infinity). ‣ 1.1 Natural Numbers ‣ 1 Preliminaries ‣ The Recursion Theorem" class="ltx_ref ltx_refmacro_autoref"><span class="ltx_text ltx_ref_tag">Axiom 1.1</span></a>. We use <a href="#S1.Thmaxiom2" title="Axiom 1.2 (Comprehension). ‣ 1.1 Natural Numbers ‣ 1 Preliminaries ‣ The Recursion Theorem" class="ltx_ref ltx_refmacro_autoref"><span class="ltx_text ltx_ref_tag">Axiom 1.2</span></a> to form the set</p>
+<table id="S1.Ex1" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="S1.Ex1.m1" class="ltx_Math" alttext="\mathbb{N}=\{y\in J:\forall I(I\text{ is inductive}\Rightarrow y\in I)\}" display="block"><mrow><mi>ℕ</mi><mo>=</mo><mrow><mo stretchy="false">{</mo><mrow><mi>y</mi><mo>∈</mo><mi>J</mi></mrow><mo lspace="0.278em" rspace="0.278em">:</mo><mrow><mo rspace="0.167em">∀</mo><mrow><mi>I</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mrow><mrow><mi>I</mi><mo>⁢</mo><mtext> is inductive</mtext></mrow><mo stretchy="false">⇒</mo><mi>y</mi><mo>∈</mo><mi>I</mi></mrow><mo stretchy="false">)</mo></mrow></mrow></mrow><mo stretchy="false">}</mo></mrow></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table>
+<p class="ltx_p">One should think of <math id="S1.Thmdefinition2.p1.m2" class="ltx_Math" alttext="\mathbb{N}" display="inline"><mi>ℕ</mi></math> as the “smallest” inductive set. An
+element of <math id="S1.Thmdefinition2.p1.m3" class="ltx_Math" alttext="\mathbb{N}" display="inline"><mi>ℕ</mi></math> is called a <span class="ltx_text ltx_font_italic">natural number</span>.</p>
+</div>
+</div>
+<div id="S1.Thmexample2" class="ltx_theorem ltx_theorem_example">
+<h6 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold">Example 1.2</span></span><span class="ltx_text ltx_font_bold">.</span>
+</h6>
+<div id="S1.Thmexample2.p1" class="ltx_para">
+<p class="ltx_p"><a href="#S1.F1" title="Figure 1 ‣ 1.1 Natural Numbers ‣ 1 Preliminaries ‣ The Recursion Theorem" class="ltx_ref ltx_refmacro_autoref"><span class="ltx_text ltx_ref_tag">Figure 1</span></a> shows a few compact names for natural
+numbers that are often used in place of the set theory
+notation<span id="footnote2" class="ltx_note ltx_role_footnote"><sup class="ltx_note_mark">2</sup><span class="ltx_note_outer"><span class="ltx_note_content"><sup class="ltx_note_mark">2</sup><span class="ltx_tag ltx_tag_note">2</span>Note that <math id="footnote2.m1" class="ltx_Math" alttext="1" display="inline"><mn>1</mn></math> is considered the first natural number in
+this post.</span></span></span>.</p>
+</div>
+</div>
+<figure id="S1.F1" class="ltx_figure">
+<table class="ltx_tabular ltx_centering ltx_guessed_headers ltx_align_middle">
+<thead class="ltx_thead">
+<tr class="ltx_tr">
+<th class="ltx_td ltx_align_center ltx_th ltx_th_column ltx_th_row ltx_border_r">Element of <math id="S1.F1.m1" class="ltx_Math" alttext="\mathbb{N}" display="inline"><mi>ℕ</mi></math>
+</th>
+<th class="ltx_td ltx_align_center ltx_th ltx_th_column">Compact Name</th>
+</tr>
+</thead>
+<tbody class="ltx_tbody">
+<tr class="ltx_tr">
+<th class="ltx_td ltx_align_center ltx_th ltx_th_row ltx_border_r ltx_border_t"><math id="S1.F1.m2" class="ltx_Math" alttext="\emptyset" display="inline"><mi mathvariant="normal">∅</mi></math></th>
+<td class="ltx_td ltx_align_center ltx_border_t"><math id="S1.F1.m3" class="ltx_Math" alttext="1" display="inline"><mn>1</mn></math></td>
+</tr>
+<tr class="ltx_tr">
+<th class="ltx_td ltx_align_center ltx_th ltx_th_row ltx_border_r"><math id="S1.F1.m4" class="ltx_Math" alttext="\{\emptyset\}" display="inline"><mrow><mo stretchy="false">{</mo><mi mathvariant="normal">∅</mi><mo stretchy="false">}</mo></mrow></math></th>
+<td class="ltx_td ltx_align_center"><math id="S1.F1.m5" class="ltx_Math" alttext="2" display="inline"><mn>2</mn></math></td>
+</tr>
+<tr class="ltx_tr">
+<th class="ltx_td ltx_align_center ltx_th ltx_th_row ltx_border_r"><math id="S1.F1.m6" class="ltx_Math" alttext="\{\emptyset,\{\emptyset\}\}" display="inline"><mrow><mo stretchy="false">{</mo><mi mathvariant="normal">∅</mi><mo>,</mo><mrow><mo stretchy="false">{</mo><mi mathvariant="normal">∅</mi><mo stretchy="false">}</mo></mrow><mo stretchy="false">}</mo></mrow></math></th>
+<td class="ltx_td ltx_align_center"><math id="S1.F1.m7" class="ltx_Math" alttext="3" display="inline"><mn>3</mn></math></td>
+</tr>
+<tr class="ltx_tr">
+<th class="ltx_td ltx_align_center ltx_th ltx_th_row ltx_border_r"><math id="S1.F1.m8" class="ltx_Math" alttext="\{\emptyset,\{\emptyset\},\{\emptyset,\{\emptyset\}\}\}" display="inline"><mrow><mo stretchy="false">{</mo><mi mathvariant="normal">∅</mi><mo>,</mo><mrow><mo stretchy="false">{</mo><mi mathvariant="normal">∅</mi><mo stretchy="false">}</mo></mrow><mo>,</mo><mrow><mo stretchy="false">{</mo><mi mathvariant="normal">∅</mi><mo>,</mo><mrow><mo stretchy="false">{</mo><mi mathvariant="normal">∅</mi><mo stretchy="false">}</mo></mrow><mo stretchy="false">}</mo></mrow><mo stretchy="false">}</mo></mrow></math></th>
+<td class="ltx_td ltx_align_center">4</td>
+</tr>
+</tbody>
+</table>
+<figcaption class="ltx_caption ltx_centering"><span class="ltx_tag ltx_tag_figure">Figure 1: </span>Compact names for elements of <math id="S1.F1.m10" class="ltx_Math" alttext="\mathbb{N}" display="inline"><mi>ℕ</mi></math>.</figcaption>
+</figure>
+<div id="S1.Thmdefinition3" class="ltx_theorem ltx_theorem_definition">
+<h6 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold">Definition 1.3</span></span><span class="ltx_text ltx_font_bold">.</span>
+</h6>
+<div id="S1.Thmdefinition3.p1" class="ltx_para">
+<p class="ltx_p">The function <math id="S1.Thmdefinition3.p1.m1" class="ltx_Math" alttext="S:\mathbb{N}\rightarrow\mathbb{N}" display="inline"><mrow><mi>S</mi><mo lspace="0.278em" rspace="0.278em">:</mo><mrow><mi>ℕ</mi><mo stretchy="false">→</mo><mi>ℕ</mi></mrow></mrow></math> defined by
+<math id="S1.Thmdefinition3.p1.m2" class="ltx_Math" alttext="S(n)=n\cup\{n\}" display="inline"><mrow><mrow><mi>S</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>n</mi><mo stretchy="false">)</mo></mrow></mrow><mo>=</mo><mrow><mi>n</mi><mo>∪</mo><mrow><mo stretchy="false">{</mo><mi>n</mi><mo stretchy="false">}</mo></mrow></mrow></mrow></math> for all <math id="S1.Thmdefinition3.p1.m3" class="ltx_Math" alttext="n\in\mathbb{N}" display="inline"><mrow><mi>n</mi><mo>∈</mo><mi>ℕ</mi></mrow></math> is called the
+<span class="ltx_text ltx_font_italic">successor function on</span> <math id="S1.Thmdefinition3.p1.m4" class="ltx_Math" alttext="\mathbb{N}" display="inline"><mi>ℕ</mi></math>. For <math id="S1.Thmdefinition3.p1.m5" class="ltx_Math" alttext="n\in\mathbb{N}" display="inline"><mrow><mi>n</mi><mo>∈</mo><mi>ℕ</mi></mrow></math>,
+we will refer <math id="S1.Thmdefinition3.p1.m6" class="ltx_Math" alttext="S(n)" display="inline"><mrow><mi>S</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>n</mi><mo stretchy="false">)</mo></mrow></mrow></math> as <math id="S1.Thmdefinition3.p1.m7" class="ltx_Math" alttext="n^{+}" display="inline"><msup><mi>n</mi><mo>+</mo></msup></math>.</p>
+</div>
+</div>
+<div id="S1.Thmexample3" class="ltx_theorem ltx_theorem_example">
+<h6 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold">Example 1.3</span></span><span class="ltx_text ltx_font_bold">.</span>
+</h6>
+<div id="S1.Thmexample3.p1" class="ltx_para">
+<p class="ltx_p">Recall <a href="#S1.Thmexample1" title="Example 1.1. ‣ 1.1 Natural Numbers ‣ 1 Preliminaries ‣ The Recursion Theorem" class="ltx_ref ltx_refmacro_autoref"><span class="ltx_text ltx_ref_tag">Example 1.1</span></a> and <a href="#footnote2" title="footnote 2 ‣ Example 1.2. ‣ 1.1 Natural Numbers ‣ 1 Preliminaries ‣ The Recursion Theorem" class="ltx_ref ltx_refmacro_autoref"><span class="ltx_text ltx_ref_tag">footnote 2</span></a>.
+One can deduce that</p>
+<ul id="S1.I2" class="ltx_itemize">
+<li id="S1.I2.i1" class="ltx_item" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">•</span> 
+<div id="S1.I2.i1.p1" class="ltx_para">
+<p class="ltx_p"><math id="S1.I2.i1.p1.m1" class="ltx_Math" alttext="1^{+}=2" display="inline"><mrow><msup><mn>1</mn><mo>+</mo></msup><mo>=</mo><mn>2</mn></mrow></math></p>
+</div>
+</li>
+<li id="S1.I2.i2" class="ltx_item" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">•</span> 
+<div id="S1.I2.i2.p1" class="ltx_para">
+<p class="ltx_p"><math id="S1.I2.i2.p1.m1" class="ltx_Math" alttext="2^{+}=3" display="inline"><mrow><msup><mn>2</mn><mo>+</mo></msup><mo>=</mo><mn>3</mn></mrow></math></p>
+</div>
+</li>
+<li id="S1.I2.i3" class="ltx_item" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">•</span> 
+<div id="S1.I2.i3.p1" class="ltx_para">
+<p class="ltx_p"><math id="S1.I2.i3.p1.m1" class="ltx_Math" alttext="3^{+}=4" display="inline"><mrow><msup><mn>3</mn><mo>+</mo></msup><mo>=</mo><mn>4</mn></mrow></math></p>
+</div>
+</li>
+<li id="S1.I2.i4" class="ltx_item" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">•</span> 
+<div id="S1.I2.i4.p1" class="ltx_para">
+<p class="ltx_p"><math id="S1.I2.i4.p1.m1" class="ltx_Math" alttext="4^{+}=5" display="inline"><mrow><msup><mn>4</mn><mo>+</mo></msup><mo>=</mo><mn>5</mn></mrow></math></p>
+</div>
+</li>
+<li id="S1.I2.i5" class="ltx_item" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">•</span> 
+<div id="S1.I2.i5.p1" class="ltx_para">
+<p class="ltx_p"><math id="S1.I2.i5.p1.m1" class="ltx_Math" alttext="5^{+}=6" display="inline"><mrow><msup><mn>5</mn><mo>+</mo></msup><mo>=</mo><mn>6</mn></mrow></math></p>
+</div>
+</li>
+</ul>
 </div>
 </div>
 </section>
+<section id="S1.SS2" class="ltx_subsection">
+<h3 class="ltx_title ltx_title_subsection">
+<span class="ltx_tag ltx_tag_subsection">1.2 </span>Peano Axioms</h3>
+
+<div id="S1.SS2.p1" class="ltx_para">
+<p class="ltx_p">While we prove and refer to the following as theorems, it is common nomenclature
+to refer to them as <span class="ltx_text ltx_font_italic">The Five Peano Axioms</span>.</p>
+</div>
+<div id="S1.Thmtheorem1" class="ltx_theorem ltx_theorem_theorem">
+<h6 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold">Theorem 1.1</span></span><span class="ltx_text ltx_font_bold">.</span>
+</h6>
+<div id="S1.Thmtheorem1.p1" class="ltx_para">
+<p class="ltx_p"><math id="S1.Thmtheorem1.p1.m1" class="ltx_Math" alttext="1\in\mathbb{N}" display="inline"><mrow><mn>1</mn><mo>∈</mo><mi>ℕ</mi></mrow></math><span class="ltx_text ltx_font_italic"></span></p>
+</div>
+</div>
+<div id="S1.Thmtheorem2" class="ltx_theorem ltx_theorem_theorem">
+<h6 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold">Theorem 1.2</span></span><span class="ltx_text ltx_font_bold">.</span>
+</h6>
+<div id="S1.Thmtheorem2.p1" class="ltx_para">
+<p class="ltx_p"><span class="ltx_text ltx_font_italic">If <math id="S1.Thmtheorem2.p1.m1" class="ltx_Math" alttext="n\in\mathbb{N}" display="inline"><mrow><mi>n</mi><mo>∈</mo><mi>ℕ</mi></mrow></math>, then <math id="S1.Thmtheorem2.p1.m2" class="ltx_Math" alttext="n^{+}\in\mathbb{N}" display="inline"><mrow><msup><mi>n</mi><mo>+</mo></msup><mo>∈</mo><mi>ℕ</mi></mrow></math>.</span></p>
+</div>
+</div>
+<div id="S1.Thmtheorem3" class="ltx_theorem ltx_theorem_theorem">
+<h6 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold">Theorem 1.3</span></span><span class="ltx_text ltx_font_bold"> </span>(The Principle of Mathematical Induction)<span class="ltx_text ltx_font_bold">.</span>
+</h6>
+<div id="S1.Thmtheorem3.p1" class="ltx_para">
+<p class="ltx_p"><span class="ltx_text ltx_font_italic">If <math id="S1.Thmtheorem3.p1.m1" class="ltx_Math" alttext="S\subseteq\mathbb{N},1\in S," display="inline"><mrow><mrow><mrow><mi>S</mi><mo>⊆</mo><mi>ℕ</mi></mrow><mo>,</mo><mrow><mn>1</mn><mo>∈</mo><mi>S</mi></mrow></mrow><mo>,</mo></mrow></math> and
+<math id="S1.Thmtheorem3.p1.m2" class="ltx_Math" alttext="n\in S\Rightarrow n^{+}\in S" display="inline"><mrow><mi>n</mi><mo>∈</mo><mi>S</mi><mo stretchy="false">⇒</mo><msup><mi>n</mi><mo>+</mo></msup><mo>∈</mo><mi>S</mi></mrow></math>, then <math id="S1.Thmtheorem3.p1.m3" class="ltx_Math" alttext="S=\mathbb{N}" display="inline"><mrow><mi>S</mi><mo>=</mo><mi>ℕ</mi></mrow></math>.</span></p>
+</div>
+</div>
+<div id="S1.Thmtheorem4" class="ltx_theorem ltx_theorem_theorem">
+<h6 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold">Theorem 1.4</span></span><span class="ltx_text ltx_font_bold">.</span>
+</h6>
+<div id="S1.Thmtheorem4.p1" class="ltx_para">
+<p class="ltx_p"><span class="ltx_text ltx_font_italic">For all <math id="S1.Thmtheorem4.p1.m1" class="ltx_Math" alttext="n\in\mathbb{N}" display="inline"><mrow><mi>n</mi><mo>∈</mo><mi>ℕ</mi></mrow></math>, we have that <math id="S1.Thmtheorem4.p1.m2" class="ltx_Math" alttext="n^{+}\neq 1" display="inline"><mrow><msup><mi>n</mi><mo>+</mo></msup><mo>≠</mo><mn>1</mn></mrow></math>.</span></p>
+</div>
+</div>
+<div id="S1.Thmtheorem5" class="ltx_theorem ltx_theorem_theorem">
+<h6 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold">Theorem 1.5</span></span><span class="ltx_text ltx_font_bold">.</span>
+</h6>
+<div id="S1.Thmtheorem5.p1" class="ltx_para">
+<p class="ltx_p"><span class="ltx_text ltx_font_italic">If <math id="S1.Thmtheorem5.p1.m1" class="ltx_Math" alttext="n,m\in\mathbb{N}" display="inline"><mrow><mrow><mi>n</mi><mo>,</mo><mi>m</mi></mrow><mo>∈</mo><mi>ℕ</mi></mrow></math> and <math id="S1.Thmtheorem5.p1.m2" class="ltx_Math" alttext="n^{+}=m^{+}" display="inline"><mrow><msup><mi>n</mi><mo>+</mo></msup><mo>=</mo><msup><mi>m</mi><mo>+</mo></msup></mrow></math>, then <math id="S1.Thmtheorem5.p1.m3" class="ltx_Math" alttext="n=m" display="inline"><mrow><mi>n</mi><mo>=</mo><mi>m</mi></mrow></math>.</span></p>
+</div>
+</div>
+</section>
+</section>
 <section id="S2" class="ltx_section">
 <h2 class="ltx_title ltx_title_section">
-<span class="ltx_tag ltx_tag_section">2 </span>Statement and Theorem</h2>
+<span class="ltx_tag ltx_tag_section">2 </span>Existence and Uniqueness</h2>
 
 <div id="S2.Thmtheorem1" class="ltx_theorem ltx_theorem_theorem">
 <h6 class="ltx_title ltx_runin ltx_title_theorem">
@@ -83,43 +293,46 @@ such that <math id="S2.p1.m2" class="ltx_Math" alttext="(1,a)\in c" display="inl
 <math id="S2.p1.m4" class="ltx_Math" alttext="(n,x)\in c" display="inline"><mrow><mrow><mo stretchy="false">(</mo><mi>n</mi><mo>,</mo><mi>x</mi><mo stretchy="false">)</mo></mrow><mo>∈</mo><mi>c</mi></mrow></math> for all <math id="S2.p1.m5" class="ltx_Math" alttext="c\in\mathcal{C}" display="inline"><mrow><mi>c</mi><mo>∈</mo><mi class="ltx_font_mathcaligraphic">𝒞</mi></mrow></math>. It’s clear to see that
 <math id="S2.p1.m6" class="ltx_Math" alttext="\mathcal{C}" display="inline"><mi class="ltx_font_mathcaligraphic">𝒞</mi></math> is nonempty since <math id="S2.p1.m7" class="ltx_Math" alttext="\mathbb{N}\times X\in C" display="inline"><mrow><mrow><mi>ℕ</mi><mo lspace="0.222em" rspace="0.222em">×</mo><mi>X</mi></mrow><mo>∈</mo><mi>C</mi></mrow></math> and so we
 can form the intersection of all sets in <math id="S2.p1.m8" class="ltx_Math" alttext="\mathcal{C}" display="inline"><mi class="ltx_font_mathcaligraphic">𝒞</mi></math> which we’ll call
-<math id="S2.p1.m9" class="ltx_Math" alttext="u" display="inline"><mi>u</mi></math>. Let <math id="S2.p1.m10" class="ltx_Math" alttext="S" display="inline"><mi>S</mi></math> be the set of all natural numbers such that if
-<math id="S2.p1.m11" class="ltx_Math" alttext="n\in S" display="inline"><mrow><mi>n</mi><mo>∈</mo><mi>S</mi></mrow></math> then there exists <math id="S2.p1.m12" class="ltx_Math" alttext="(n,x)\in u" display="inline"><mrow><mrow><mo stretchy="false">(</mo><mi>n</mi><mo>,</mo><mi>x</mi><mo stretchy="false">)</mo></mrow><mo>∈</mo><mi>u</mi></mrow></math> and if
-<math id="S2.p1.m13" class="ltx_Math" alttext="(n,w),(n,y)\in u" display="inline"><mrow><mrow><mrow><mo stretchy="false">(</mo><mi>n</mi><mo>,</mo><mi>w</mi><mo stretchy="false">)</mo></mrow><mo>,</mo><mrow><mo stretchy="false">(</mo><mi>n</mi><mo>,</mo><mi>y</mi><mo stretchy="false">)</mo></mrow></mrow><mo>∈</mo><mi>u</mi></mrow></math> then <math id="S2.p1.m14" class="ltx_Math" alttext="w=y" display="inline"><mrow><mi>w</mi><mo>=</mo><mi>y</mi></mrow></math>. We will prove inductively that
-<math id="S2.p1.m15" class="ltx_Math" alttext="S=\mathbb{N}" display="inline"><mrow><mi>S</mi><mo>=</mo><mi>ℕ</mi></mrow></math> which establishes <math id="S2.p1.m16" class="ltx_Math" alttext="u" display="inline"><mi>u</mi></math> as a function. Furthermore,
-given how <math id="S2.p1.m17" class="ltx_Math" alttext="u" display="inline"><mi>u</mi></math> is constructed, such a proof gives us exactly the kind of
-function we are looking for.</p>
+<math id="S2.p1.m9" class="ltx_Math" alttext="u" display="inline"><mi>u</mi></math>.</p>
 </div>
 <div id="S2.p2" class="ltx_para">
-<p class="ltx_p">Suppose that <math id="S2.p2.m1" class="ltx_Math" alttext="(1,b)\in u" display="inline"><mrow><mrow><mo stretchy="false">(</mo><mn>1</mn><mo>,</mo><mi>b</mi><mo stretchy="false">)</mo></mrow><mo>∈</mo><mi>u</mi></mrow></math>, <math id="S2.p2.m2" class="ltx_Math" alttext="a\neq b" display="inline"><mrow><mi>a</mi><mo>≠</mo><mi>b</mi></mrow></math>, and consider the set
-<math id="S2.p2.m3" class="ltx_Math" alttext="M=u\setminus\{(1,b)\}" display="inline"><mrow><mi>M</mi><mo>=</mo><mrow><mi>u</mi><mo>∖</mo><mrow><mo stretchy="false">{</mo><mrow><mo stretchy="false">(</mo><mn>1</mn><mo>,</mo><mi>b</mi><mo stretchy="false">)</mo></mrow><mo stretchy="false">}</mo></mrow></mrow></mrow></math>. We claim that <math id="S2.p2.m4" class="ltx_Math" alttext="(n^{+},f(x))\in M" display="inline"><mrow><mrow><mo stretchy="false">(</mo><msup><mi>n</mi><mo>+</mo></msup><mo>,</mo><mrow><mi>f</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo></mrow></mrow><mo stretchy="false">)</mo></mrow><mo>∈</mo><mi>M</mi></mrow></math>
-whenever <math id="S2.p2.m5" class="ltx_Math" alttext="(n,x)\in M" display="inline"><mrow><mrow><mo stretchy="false">(</mo><mi>n</mi><mo>,</mo><mi>x</mi><mo stretchy="false">)</mo></mrow><mo>∈</mo><mi>M</mi></mrow></math>. If that weren’t the case then some
-<math id="S2.p2.m6" class="ltx_Math" alttext="(n^{+},f(x))" display="inline"><mrow><mo stretchy="false">(</mo><msup><mi>n</mi><mo>+</mo></msup><mo>,</mo><mrow><mi>f</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo></mrow></mrow><mo stretchy="false">)</mo></mrow></math> would not be present in <math id="S2.p2.m7" class="ltx_Math" alttext="M" display="inline"><mi>M</mi></math> for some <math id="S2.p2.m8" class="ltx_Math" alttext="(n,x)\in M" display="inline"><mrow><mrow><mo stretchy="false">(</mo><mi>n</mi><mo>,</mo><mi>x</mi><mo stretchy="false">)</mo></mrow><mo>∈</mo><mi>M</mi></mrow></math>.
-Well by the definition of <math id="S2.p2.m9" class="ltx_Math" alttext="M" display="inline"><mi>M</mi></math>, for all <math id="S2.p2.m10" class="ltx_Math" alttext="\alpha" display="inline"><mi>α</mi></math> we have that
-<math id="S2.p2.m11" class="ltx_Math" alttext="(\alpha\in u\land\alpha\neq(1,b))\rightarrow\alpha\in M" display="inline"><mrow><mrow><mo stretchy="false">(</mo><mrow><mi>α</mi><mo>∈</mo><mrow><mi>u</mi><mo>∧</mo><mi>α</mi></mrow><mo>≠</mo><mrow><mo stretchy="false">(</mo><mn>1</mn><mo>,</mo><mi>b</mi><mo stretchy="false">)</mo></mrow></mrow><mo stretchy="false">)</mo></mrow><mo stretchy="false">→</mo><mi>α</mi><mo>∈</mo><mi>M</mi></mrow></math> which
-implies that if <math id="S2.p2.m12" class="ltx_Math" alttext="\alpha\not\in M" display="inline"><mrow><mi>α</mi><mo>∉</mo><mi>M</mi></mrow></math>, then
-<math id="S2.p2.m13" class="ltx_Math" alttext="\alpha\not\in u\lor\alpha=(1,b)" display="inline"><mrow><mi>α</mi><mo>∉</mo><mrow><mi>u</mi><mo>∨</mo><mi>α</mi></mrow><mo>=</mo><mrow><mo stretchy="false">(</mo><mn>1</mn><mo>,</mo><mi>b</mi><mo stretchy="false">)</mo></mrow></mrow></math>. Well it can’t be the case that
-<math id="S2.p2.m14" class="ltx_Math" alttext="(1,b)=(n^{+},f(x))" display="inline"><mrow><mrow><mo stretchy="false">(</mo><mn>1</mn><mo>,</mo><mi>b</mi><mo stretchy="false">)</mo></mrow><mo>=</mo><mrow><mo stretchy="false">(</mo><msup><mi>n</mi><mo>+</mo></msup><mo>,</mo><mrow><mi>f</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo></mrow></mrow><mo stretchy="false">)</mo></mrow></mrow></math> by <a href="#S1.Thmaxiom1" title="Axiom 1.1. ‣ 1 Preliminaries ‣ The Recursion Theorem" class="ltx_ref ltx_refmacro_autoref"><span class="ltx_text ltx_ref_tag">Axiom 1.1</span></a>. So then we must
-conclude that <math id="S2.p2.m15" class="ltx_Math" alttext="(n^{+},f(x))\not\in u" display="inline"><mrow><mrow><mo stretchy="false">(</mo><msup><mi>n</mi><mo>+</mo></msup><mo>,</mo><mrow><mi>f</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo></mrow></mrow><mo stretchy="false">)</mo></mrow><mo>∉</mo><mi>u</mi></mrow></math> which
-contradicts <math id="S2.p2.m16" class="ltx_Math" alttext="u" display="inline"><mi>u</mi></math>’s initial construction since <math id="S2.p2.m17" class="ltx_Math" alttext="(n,x)\in u" display="inline"><mrow><mrow><mo stretchy="false">(</mo><mi>n</mi><mo>,</mo><mi>x</mi><mo stretchy="false">)</mo></mrow><mo>∈</mo><mi>u</mi></mrow></math> by the
-assumption that <math id="S2.p2.m18" class="ltx_Math" alttext="(n,x)\in M" display="inline"><mrow><mrow><mo stretchy="false">(</mo><mi>n</mi><mo>,</mo><mi>x</mi><mo stretchy="false">)</mo></mrow><mo>∈</mo><mi>M</mi></mrow></math>. Therefore, since <math id="S2.p2.m19" class="ltx_Math" alttext="(1,a)\in M" display="inline"><mrow><mrow><mo stretchy="false">(</mo><mn>1</mn><mo>,</mo><mi>a</mi><mo stretchy="false">)</mo></mrow><mo>∈</mo><mi>M</mi></mrow></math> and for any
-other <math id="S2.p2.m20" class="ltx_Math" alttext="(1,b)\in M" display="inline"><mrow><mrow><mo stretchy="false">(</mo><mn>1</mn><mo>,</mo><mi>b</mi><mo stretchy="false">)</mo></mrow><mo>∈</mo><mi>M</mi></mrow></math> we know that <math id="S2.p2.m21" class="ltx_Math" alttext="a=b" display="inline"><mrow><mi>a</mi><mo>=</mo><mi>b</mi></mrow></math>, we conclude that
-<math id="S2.p2.m22" class="ltx_Math" alttext="1\in S" display="inline"><mrow><mn>1</mn><mo>∈</mo><mi>S</mi></mrow></math>.</p>
+<p class="ltx_p">Let <math id="S2.p2.m1" class="ltx_Math" alttext="S" display="inline"><mi>S</mi></math> be the set of all natural numbers such that if
+<math id="S2.p2.m2" class="ltx_Math" alttext="n\in S" display="inline"><mrow><mi>n</mi><mo>∈</mo><mi>S</mi></mrow></math> then there exists <math id="S2.p2.m3" class="ltx_Math" alttext="(n,x)\in u" display="inline"><mrow><mrow><mo stretchy="false">(</mo><mi>n</mi><mo>,</mo><mi>x</mi><mo stretchy="false">)</mo></mrow><mo>∈</mo><mi>u</mi></mrow></math> and if
+<math id="S2.p2.m4" class="ltx_Math" alttext="(n,w),(n,y)\in u" display="inline"><mrow><mrow><mrow><mo stretchy="false">(</mo><mi>n</mi><mo>,</mo><mi>w</mi><mo stretchy="false">)</mo></mrow><mo>,</mo><mrow><mo stretchy="false">(</mo><mi>n</mi><mo>,</mo><mi>y</mi><mo stretchy="false">)</mo></mrow></mrow><mo>∈</mo><mi>u</mi></mrow></math> then <math id="S2.p2.m5" class="ltx_Math" alttext="w=y" display="inline"><mrow><mi>w</mi><mo>=</mo><mi>y</mi></mrow></math>. We will prove inductively that
+<math id="S2.p2.m6" class="ltx_Math" alttext="S=\mathbb{N}" display="inline"><mrow><mi>S</mi><mo>=</mo><mi>ℕ</mi></mrow></math> which establishes that <math id="S2.p2.m7" class="ltx_Math" alttext="u" display="inline"><mi>u</mi></math> is a function. Furthermore,
+given how <math id="S2.p2.m8" class="ltx_Math" alttext="u" display="inline"><mi>u</mi></math> is constructed, such a proof gives us exactly the kind of
+function we are looking for.</p>
 </div>
 <div id="S2.p3" class="ltx_para">
-<p class="ltx_p">Now suppose that <math id="S2.p3.m1" class="ltx_Math" alttext="n\in S" display="inline"><mrow><mi>n</mi><mo>∈</mo><mi>S</mi></mrow></math> which implies that there is an <math id="S2.p3.m2" class="ltx_Math" alttext="(n,x)\in u" display="inline"><mrow><mrow><mo stretchy="false">(</mo><mi>n</mi><mo>,</mo><mi>x</mi><mo stretchy="false">)</mo></mrow><mo>∈</mo><mi>u</mi></mrow></math>
-for at most one <math id="S2.p3.m3" class="ltx_Math" alttext="x" display="inline"><mi>x</mi></math>. It follows from the definition of <math id="S2.p3.m4" class="ltx_Math" alttext="u" display="inline"><mi>u</mi></math> that
-<math id="S2.p3.m5" class="ltx_Math" alttext="(n^{+},f(x))\in u" display="inline"><mrow><mrow><mo stretchy="false">(</mo><msup><mi>n</mi><mo>+</mo></msup><mo>,</mo><mrow><mi>f</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo></mrow></mrow><mo stretchy="false">)</mo></mrow><mo>∈</mo><mi>u</mi></mrow></math>. Now if <math id="S2.p3.m6" class="ltx_Math" alttext="n^{+}" display="inline"><msup><mi>n</mi><mo>+</mo></msup></math> isn’t in <math id="S2.p3.m7" class="ltx_Math" alttext="S" display="inline"><mi>S</mi></math>, then there
-exists <math id="S2.p3.m8" class="ltx_Math" alttext="(n^{+},y)\in u" display="inline"><mrow><mrow><mo stretchy="false">(</mo><msup><mi>n</mi><mo>+</mo></msup><mo>,</mo><mi>y</mi><mo stretchy="false">)</mo></mrow><mo>∈</mo><mi>u</mi></mrow></math> such that <math id="S2.p3.m9" class="ltx_Math" alttext="f(x)\neq y" display="inline"><mrow><mrow><mi>f</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo></mrow></mrow><mo>≠</mo><mi>y</mi></mrow></math>. Consider the set
-<math id="S2.p3.m10" class="ltx_Math" alttext="J=u\setminus\{(n^{+},y)\}" display="inline"><mrow><mi>J</mi><mo>=</mo><mrow><mi>u</mi><mo>∖</mo><mrow><mo stretchy="false">{</mo><mrow><mo stretchy="false">(</mo><msup><mi>n</mi><mo>+</mo></msup><mo>,</mo><mi>y</mi><mo stretchy="false">)</mo></mrow><mo stretchy="false">}</mo></mrow></mrow></mrow></math> and some <math id="S2.p3.m11" class="ltx_Math" alttext="(m,t)\in J" display="inline"><mrow><mrow><mo stretchy="false">(</mo><mi>m</mi><mo>,</mo><mi>t</mi><mo stretchy="false">)</mo></mrow><mo>∈</mo><mi>J</mi></mrow></math>. If <math id="S2.p3.m12" class="ltx_Math" alttext="m=n" display="inline"><mrow><mi>m</mi><mo>=</mo><mi>n</mi></mrow></math>,
-then <math id="S2.p3.m13" class="ltx_Math" alttext="t=x" display="inline"><mrow><mi>t</mi><mo>=</mo><mi>x</mi></mrow></math> since <math id="S2.p3.m14" class="ltx_Math" alttext="n\in S" display="inline"><mrow><mi>n</mi><mo>∈</mo><mi>S</mi></mrow></math> and so
-<math id="S2.p3.m15" class="ltx_Math" alttext="(n^{+},f(x))=(m^{+},f(t))\in J" display="inline"><mrow><mrow><mo stretchy="false">(</mo><msup><mi>n</mi><mo>+</mo></msup><mo>,</mo><mrow><mi>f</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo></mrow></mrow><mo stretchy="false">)</mo></mrow><mo>=</mo><mrow><mo stretchy="false">(</mo><msup><mi>m</mi><mo>+</mo></msup><mo>,</mo><mrow><mi>f</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>t</mi><mo stretchy="false">)</mo></mrow></mrow><mo stretchy="false">)</mo></mrow><mo>∈</mo><mi>J</mi></mrow></math>. By construction of J, we note that
-<math id="S2.p3.m16" class="ltx_Math" alttext="\alpha\not\in J\rightarrow(\alpha\not\in u\lor\alpha=(n^{+},y))" display="inline"><mrow><mi>α</mi><mo>∉</mo><mi>J</mi><mo stretchy="false">→</mo><mrow><mo stretchy="false">(</mo><mrow><mi>α</mi><mo>∉</mo><mrow><mi>u</mi><mo>∨</mo><mi>α</mi></mrow><mo>=</mo><mrow><mo stretchy="false">(</mo><msup><mi>n</mi><mo>+</mo></msup><mo>,</mo><mi>y</mi><mo stretchy="false">)</mo></mrow></mrow><mo stretchy="false">)</mo></mrow></mrow></math>.
-So if <math id="S2.p3.m17" class="ltx_Math" alttext="m\neq n" display="inline"><mrow><mi>m</mi><mo>≠</mo><mi>n</mi></mrow></math>, then we know that <math id="S2.p3.m18" class="ltx_Math" alttext="m^{+}\neq n^{+}" display="inline"><mrow><msup><mi>m</mi><mo>+</mo></msup><mo>≠</mo><msup><mi>n</mi><mo>+</mo></msup></mrow></math> by the
-<a href="#S1.Thmaxiom2" title="Axiom 1.2. ‣ 1 Preliminaries ‣ The Recursion Theorem" class="ltx_ref ltx_refmacro_autoref"><span class="ltx_text ltx_ref_tag">Axiom 1.2</span></a> and so if <math id="S2.p3.m19" class="ltx_Math" alttext="(m^{+},f(t))\not\in J" display="inline"><mrow><mrow><mo stretchy="false">(</mo><msup><mi>m</mi><mo>+</mo></msup><mo>,</mo><mrow><mi>f</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>t</mi><mo stretchy="false">)</mo></mrow></mrow><mo stretchy="false">)</mo></mrow><mo>∉</mo><mi>J</mi></mrow></math> then we
-must conclude that <math id="S2.p3.m20" class="ltx_Math" alttext="(m^{+},f(t))\not\in u" display="inline"><mrow><mrow><mo stretchy="false">(</mo><msup><mi>m</mi><mo>+</mo></msup><mo>,</mo><mrow><mi>f</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>t</mi><mo stretchy="false">)</mo></mrow></mrow><mo stretchy="false">)</mo></mrow><mo>∉</mo><mi>u</mi></mrow></math> which is a contradiction to the
-construction of <math id="S2.p3.m21" class="ltx_Math" alttext="u" display="inline"><mi>u</mi></math>. So <math id="S2.p3.m22" class="ltx_Math" alttext="n^{+}\in S" display="inline"><mrow><msup><mi>n</mi><mo>+</mo></msup><mo>∈</mo><mi>S</mi></mrow></math> and by the principal of
-mathematical induction we conclude that <math id="S2.p3.m23" class="ltx_Math" alttext="\mathbb{N}=S" display="inline"><mrow><mi>ℕ</mi><mo>=</mo><mi>S</mi></mrow></math>.
+<p class="ltx_p">Suppose that <math id="S2.p3.m1" class="ltx_Math" alttext="(1,b)\in u" display="inline"><mrow><mrow><mo stretchy="false">(</mo><mn>1</mn><mo>,</mo><mi>b</mi><mo stretchy="false">)</mo></mrow><mo>∈</mo><mi>u</mi></mrow></math>, <math id="S2.p3.m2" class="ltx_Math" alttext="a\neq b" display="inline"><mrow><mi>a</mi><mo>≠</mo><mi>b</mi></mrow></math>, and consider the set
+<math id="S2.p3.m3" class="ltx_Math" alttext="M=u\setminus\{(1,b)\}" display="inline"><mrow><mi>M</mi><mo>=</mo><mrow><mi>u</mi><mo>∖</mo><mrow><mo stretchy="false">{</mo><mrow><mo stretchy="false">(</mo><mn>1</mn><mo>,</mo><mi>b</mi><mo stretchy="false">)</mo></mrow><mo stretchy="false">}</mo></mrow></mrow></mrow></math>. We claim that <math id="S2.p3.m4" class="ltx_Math" alttext="(n^{+},f(x))\in M" display="inline"><mrow><mrow><mo stretchy="false">(</mo><msup><mi>n</mi><mo>+</mo></msup><mo>,</mo><mrow><mi>f</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo></mrow></mrow><mo stretchy="false">)</mo></mrow><mo>∈</mo><mi>M</mi></mrow></math>
+whenever <math id="S2.p3.m5" class="ltx_Math" alttext="(n,x)\in M" display="inline"><mrow><mrow><mo stretchy="false">(</mo><mi>n</mi><mo>,</mo><mi>x</mi><mo stretchy="false">)</mo></mrow><mo>∈</mo><mi>M</mi></mrow></math>. If that weren’t the case then some
+<math id="S2.p3.m6" class="ltx_Math" alttext="(n^{+},f(x))" display="inline"><mrow><mo stretchy="false">(</mo><msup><mi>n</mi><mo>+</mo></msup><mo>,</mo><mrow><mi>f</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo></mrow></mrow><mo stretchy="false">)</mo></mrow></math> would not be present in <math id="S2.p3.m7" class="ltx_Math" alttext="M" display="inline"><mi>M</mi></math> for some <math id="S2.p3.m8" class="ltx_Math" alttext="(n,x)\in M" display="inline"><mrow><mrow><mo stretchy="false">(</mo><mi>n</mi><mo>,</mo><mi>x</mi><mo stretchy="false">)</mo></mrow><mo>∈</mo><mi>M</mi></mrow></math>.
+Well by the definition of <math id="S2.p3.m9" class="ltx_Math" alttext="M" display="inline"><mi>M</mi></math>, for all <math id="S2.p3.m10" class="ltx_Math" alttext="\alpha" display="inline"><mi>α</mi></math> we have that
+<math id="S2.p3.m11" class="ltx_Math" alttext="(\alpha\in u\land\alpha\neq(1,b))\rightarrow\alpha\in M" display="inline"><mrow><mrow><mo stretchy="false">(</mo><mrow><mi>α</mi><mo>∈</mo><mrow><mi>u</mi><mo>∧</mo><mi>α</mi></mrow><mo>≠</mo><mrow><mo stretchy="false">(</mo><mn>1</mn><mo>,</mo><mi>b</mi><mo stretchy="false">)</mo></mrow></mrow><mo stretchy="false">)</mo></mrow><mo stretchy="false">→</mo><mi>α</mi><mo>∈</mo><mi>M</mi></mrow></math> which
+implies that if <math id="S2.p3.m12" class="ltx_Math" alttext="\alpha\not\in M" display="inline"><mrow><mi>α</mi><mo>∉</mo><mi>M</mi></mrow></math>, then
+<math id="S2.p3.m13" class="ltx_Math" alttext="\alpha\not\in u\lor\alpha=(1,b)" display="inline"><mrow><mi>α</mi><mo>∉</mo><mrow><mi>u</mi><mo>∨</mo><mi>α</mi></mrow><mo>=</mo><mrow><mo stretchy="false">(</mo><mn>1</mn><mo>,</mo><mi>b</mi><mo stretchy="false">)</mo></mrow></mrow></math>. Well it can’t be the case that
+<math id="S2.p3.m14" class="ltx_Math" alttext="(1,b)=(n^{+},f(x))" display="inline"><mrow><mrow><mo stretchy="false">(</mo><mn>1</mn><mo>,</mo><mi>b</mi><mo stretchy="false">)</mo></mrow><mo>=</mo><mrow><mo stretchy="false">(</mo><msup><mi>n</mi><mo>+</mo></msup><mo>,</mo><mrow><mi>f</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo></mrow></mrow><mo stretchy="false">)</mo></mrow></mrow></math> by <a href="#S1.Thmtheorem4" title="Theorem 1.4. ‣ 1.2 Peano Axioms ‣ 1 Preliminaries ‣ The Recursion Theorem" class="ltx_ref ltx_refmacro_autoref"><span class="ltx_text ltx_ref_tag">Theorem 1.4</span></a>. So then we must
+conclude that <math id="S2.p3.m15" class="ltx_Math" alttext="(n^{+},f(x))\not\in u" display="inline"><mrow><mrow><mo stretchy="false">(</mo><msup><mi>n</mi><mo>+</mo></msup><mo>,</mo><mrow><mi>f</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo></mrow></mrow><mo stretchy="false">)</mo></mrow><mo>∉</mo><mi>u</mi></mrow></math> which
+contradicts <math id="S2.p3.m16" class="ltx_Math" alttext="u" display="inline"><mi>u</mi></math>’s initial construction since <math id="S2.p3.m17" class="ltx_Math" alttext="(n,x)\in u" display="inline"><mrow><mrow><mo stretchy="false">(</mo><mi>n</mi><mo>,</mo><mi>x</mi><mo stretchy="false">)</mo></mrow><mo>∈</mo><mi>u</mi></mrow></math> by the
+assumption that <math id="S2.p3.m18" class="ltx_Math" alttext="(n,x)\in M" display="inline"><mrow><mrow><mo stretchy="false">(</mo><mi>n</mi><mo>,</mo><mi>x</mi><mo stretchy="false">)</mo></mrow><mo>∈</mo><mi>M</mi></mrow></math>. Therefore, since <math id="S2.p3.m19" class="ltx_Math" alttext="(1,a)\in M" display="inline"><mrow><mrow><mo stretchy="false">(</mo><mn>1</mn><mo>,</mo><mi>a</mi><mo stretchy="false">)</mo></mrow><mo>∈</mo><mi>M</mi></mrow></math> and for any
+other <math id="S2.p3.m20" class="ltx_Math" alttext="(1,b)\in M" display="inline"><mrow><mrow><mo stretchy="false">(</mo><mn>1</mn><mo>,</mo><mi>b</mi><mo stretchy="false">)</mo></mrow><mo>∈</mo><mi>M</mi></mrow></math> we know that <math id="S2.p3.m21" class="ltx_Math" alttext="a=b" display="inline"><mrow><mi>a</mi><mo>=</mo><mi>b</mi></mrow></math>, we conclude that
+<math id="S2.p3.m22" class="ltx_Math" alttext="1\in S" display="inline"><mrow><mn>1</mn><mo>∈</mo><mi>S</mi></mrow></math>.</p>
+</div>
+<div id="S2.p4" class="ltx_para">
+<p class="ltx_p">Now suppose that <math id="S2.p4.m1" class="ltx_Math" alttext="n\in S" display="inline"><mrow><mi>n</mi><mo>∈</mo><mi>S</mi></mrow></math> which implies that there is an <math id="S2.p4.m2" class="ltx_Math" alttext="(n,x)\in u" display="inline"><mrow><mrow><mo stretchy="false">(</mo><mi>n</mi><mo>,</mo><mi>x</mi><mo stretchy="false">)</mo></mrow><mo>∈</mo><mi>u</mi></mrow></math>
+for at most one <math id="S2.p4.m3" class="ltx_Math" alttext="x" display="inline"><mi>x</mi></math>. It follows from the definition of <math id="S2.p4.m4" class="ltx_Math" alttext="u" display="inline"><mi>u</mi></math> that
+<math id="S2.p4.m5" class="ltx_Math" alttext="(n^{+},f(x))\in u" display="inline"><mrow><mrow><mo stretchy="false">(</mo><msup><mi>n</mi><mo>+</mo></msup><mo>,</mo><mrow><mi>f</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo></mrow></mrow><mo stretchy="false">)</mo></mrow><mo>∈</mo><mi>u</mi></mrow></math>. Now if <math id="S2.p4.m6" class="ltx_Math" alttext="n^{+}" display="inline"><msup><mi>n</mi><mo>+</mo></msup></math> isn’t in <math id="S2.p4.m7" class="ltx_Math" alttext="S" display="inline"><mi>S</mi></math>, then there
+exists <math id="S2.p4.m8" class="ltx_Math" alttext="(n^{+},y)\in u" display="inline"><mrow><mrow><mo stretchy="false">(</mo><msup><mi>n</mi><mo>+</mo></msup><mo>,</mo><mi>y</mi><mo stretchy="false">)</mo></mrow><mo>∈</mo><mi>u</mi></mrow></math> such that <math id="S2.p4.m9" class="ltx_Math" alttext="f(x)\neq y" display="inline"><mrow><mrow><mi>f</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo></mrow></mrow><mo>≠</mo><mi>y</mi></mrow></math>. Consider the set
+<math id="S2.p4.m10" class="ltx_Math" alttext="J=u\setminus\{(n^{+},y)\}" display="inline"><mrow><mi>J</mi><mo>=</mo><mrow><mi>u</mi><mo>∖</mo><mrow><mo stretchy="false">{</mo><mrow><mo stretchy="false">(</mo><msup><mi>n</mi><mo>+</mo></msup><mo>,</mo><mi>y</mi><mo stretchy="false">)</mo></mrow><mo stretchy="false">}</mo></mrow></mrow></mrow></math> and some <math id="S2.p4.m11" class="ltx_Math" alttext="(m,t)\in J" display="inline"><mrow><mrow><mo stretchy="false">(</mo><mi>m</mi><mo>,</mo><mi>t</mi><mo stretchy="false">)</mo></mrow><mo>∈</mo><mi>J</mi></mrow></math>. If <math id="S2.p4.m12" class="ltx_Math" alttext="m=n" display="inline"><mrow><mi>m</mi><mo>=</mo><mi>n</mi></mrow></math>,
+then <math id="S2.p4.m13" class="ltx_Math" alttext="t=x" display="inline"><mrow><mi>t</mi><mo>=</mo><mi>x</mi></mrow></math> since <math id="S2.p4.m14" class="ltx_Math" alttext="n\in S" display="inline"><mrow><mi>n</mi><mo>∈</mo><mi>S</mi></mrow></math> and so
+<math id="S2.p4.m15" class="ltx_Math" alttext="(n^{+},f(x))=(m^{+},f(t))\in J" display="inline"><mrow><mrow><mo stretchy="false">(</mo><msup><mi>n</mi><mo>+</mo></msup><mo>,</mo><mrow><mi>f</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo></mrow></mrow><mo stretchy="false">)</mo></mrow><mo>=</mo><mrow><mo stretchy="false">(</mo><msup><mi>m</mi><mo>+</mo></msup><mo>,</mo><mrow><mi>f</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>t</mi><mo stretchy="false">)</mo></mrow></mrow><mo stretchy="false">)</mo></mrow><mo>∈</mo><mi>J</mi></mrow></math>. By construction of J, we note that
+<math id="S2.p4.m16" class="ltx_Math" alttext="\alpha\not\in J\rightarrow(\alpha\not\in u\lor\alpha=(n^{+},y))" display="inline"><mrow><mi>α</mi><mo>∉</mo><mi>J</mi><mo stretchy="false">→</mo><mrow><mo stretchy="false">(</mo><mrow><mi>α</mi><mo>∉</mo><mrow><mi>u</mi><mo>∨</mo><mi>α</mi></mrow><mo>=</mo><mrow><mo stretchy="false">(</mo><msup><mi>n</mi><mo>+</mo></msup><mo>,</mo><mi>y</mi><mo stretchy="false">)</mo></mrow></mrow><mo stretchy="false">)</mo></mrow></mrow></math>.
+So if <math id="S2.p4.m17" class="ltx_Math" alttext="m\neq n" display="inline"><mrow><mi>m</mi><mo>≠</mo><mi>n</mi></mrow></math>, then we know that <math id="S2.p4.m18" class="ltx_Math" alttext="m^{+}\neq n^{+}" display="inline"><mrow><msup><mi>m</mi><mo>+</mo></msup><mo>≠</mo><msup><mi>n</mi><mo>+</mo></msup></mrow></math> by the
+<a href="#S1.Thmtheorem5" title="Theorem 1.5. ‣ 1.2 Peano Axioms ‣ 1 Preliminaries ‣ The Recursion Theorem" class="ltx_ref ltx_refmacro_autoref"><span class="ltx_text ltx_ref_tag">Theorem 1.5</span></a> and so if <math id="S2.p4.m19" class="ltx_Math" alttext="(m^{+},f(t))\not\in J" display="inline"><mrow><mrow><mo stretchy="false">(</mo><msup><mi>m</mi><mo>+</mo></msup><mo>,</mo><mrow><mi>f</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>t</mi><mo stretchy="false">)</mo></mrow></mrow><mo stretchy="false">)</mo></mrow><mo>∉</mo><mi>J</mi></mrow></math> then we
+must conclude that <math id="S2.p4.m20" class="ltx_Math" alttext="(m^{+},f(t))\not\in u" display="inline"><mrow><mrow><mo stretchy="false">(</mo><msup><mi>m</mi><mo>+</mo></msup><mo>,</mo><mrow><mi>f</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>t</mi><mo stretchy="false">)</mo></mrow></mrow><mo stretchy="false">)</mo></mrow><mo>∉</mo><mi>u</mi></mrow></math> which is a contradiction to the
+construction of <math id="S2.p4.m21" class="ltx_Math" alttext="u" display="inline"><mi>u</mi></math>. So <math id="S2.p4.m22" class="ltx_Math" alttext="n^{+}\in S" display="inline"><mrow><msup><mi>n</mi><mo>+</mo></msup><mo>∈</mo><mi>S</mi></mrow></math> and by the principal of
+mathematical induction we conclude that <math id="S2.p4.m23" class="ltx_Math" alttext="\mathbb{N}=S" display="inline"><mrow><mi>ℕ</mi><mo>=</mo><mi>S</mi></mrow></math>.
 ∎</p>
 </div>
 </div>
@@ -128,22 +341,137 @@ mathematical induction we conclude that <math id="S2.p3.m23" class="ltx_Math" al
 <span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold">Corollary 2.1</span></span><span class="ltx_text ltx_font_bold">.</span>
 </h6>
 <div id="S2.Thmcorollary1.p1" class="ltx_para">
-<p class="ltx_p"><span class="ltx_text ltx_font_italic">The function defined in <a href="#S2.Thmtheorem1" title="Theorem 2.1. ‣ 2 Statement and Theorem ‣ The Recursion Theorem" class="ltx_ref ltx_refmacro_autoref"><span class="ltx_text ltx_ref_tag">Theorem 2.1</span></a> is unique.</span></p>
+<p class="ltx_p"><span class="ltx_text ltx_font_italic">The function defined in <a href="#S2.Thmtheorem1" title="Theorem 2.1. ‣ 2 Existence and Uniqueness ‣ The Recursion Theorem" class="ltx_ref ltx_refmacro_autoref"><span class="ltx_text ltx_ref_tag">Theorem 2.1</span></a> is unique.</span></p>
 </div>
 </div>
 <div class="ltx_proof">
 <h6 class="ltx_title ltx_runin ltx_font_italic ltx_title_proof">Proof.</h6>
-<div id="S2.p4" class="ltx_para">
-<p class="ltx_p">Let <math id="S2.p4.m1" class="ltx_Math" alttext="a\in X" display="inline"><mrow><mi>a</mi><mo>∈</mo><mi>X</mi></mrow></math> and <math id="S2.p4.m2" class="ltx_Math" alttext="f:X\rightarrow X" display="inline"><mrow><mi>f</mi><mo lspace="0.278em" rspace="0.278em">:</mo><mrow><mi>X</mi><mo stretchy="false">→</mo><mi>X</mi></mrow></mrow></math> for some set <math id="S2.p4.m3" class="ltx_Math" alttext="X" display="inline"><mi>X</mi></math>. Suppose
+<div id="S2.p5" class="ltx_para">
+<p class="ltx_p">Let <math id="S2.p5.m1" class="ltx_Math" alttext="a\in X" display="inline"><mrow><mi>a</mi><mo>∈</mo><mi>X</mi></mrow></math> and <math id="S2.p5.m2" class="ltx_Math" alttext="f:X\rightarrow X" display="inline"><mrow><mi>f</mi><mo lspace="0.278em" rspace="0.278em">:</mo><mrow><mi>X</mi><mo stretchy="false">→</mo><mi>X</mi></mrow></mrow></math> for some set <math id="S2.p5.m3" class="ltx_Math" alttext="X" display="inline"><mi>X</mi></math>. Suppose
 that there are two functions
-<math id="S2.p4.m4" class="ltx_Math" alttext="F:\mathbb{N}\rightarrow\mathbb{X}" display="inline"><mrow><mi>F</mi><mo lspace="0.278em" rspace="0.278em">:</mo><mrow><mi>ℕ</mi><mo stretchy="false">→</mo><mi>𝕏</mi></mrow></mrow></math> and
-<math id="S2.p4.m5" class="ltx_Math" alttext="G:\mathbb{N}\rightarrow\mathbb{X}" display="inline"><mrow><mi>G</mi><mo lspace="0.278em" rspace="0.278em">:</mo><mrow><mi>ℕ</mi><mo stretchy="false">→</mo><mi>𝕏</mi></mrow></mrow></math> where <math id="S2.p4.m6" class="ltx_Math" alttext="F(1)=G(1)=a" display="inline"><mrow><mrow><mi>F</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mn>1</mn><mo stretchy="false">)</mo></mrow></mrow><mo>=</mo><mrow><mi>G</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mn>1</mn><mo stretchy="false">)</mo></mrow></mrow><mo>=</mo><mi>a</mi></mrow></math>,
-<math id="S2.p4.m7" class="ltx_Math" alttext="F(n^{+})=f(F(n))" display="inline"><mrow><mrow><mi>F</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><msup><mi>n</mi><mo>+</mo></msup><mo stretchy="false">)</mo></mrow></mrow><mo>=</mo><mrow><mi>f</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mrow><mi>F</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>n</mi><mo stretchy="false">)</mo></mrow></mrow><mo stretchy="false">)</mo></mrow></mrow></mrow></math>, and <math id="S2.p4.m8" class="ltx_Math" alttext="G(n^{+})=f(G(n))" display="inline"><mrow><mrow><mi>G</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><msup><mi>n</mi><mo>+</mo></msup><mo stretchy="false">)</mo></mrow></mrow><mo>=</mo><mrow><mi>f</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mrow><mi>G</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>n</mi><mo stretchy="false">)</mo></mrow></mrow><mo stretchy="false">)</mo></mrow></mrow></mrow></math> for all natural
-numbers <math id="S2.p4.m9" class="ltx_Math" alttext="n" display="inline"><mi>n</mi></math>. Let <math id="S2.p4.m10" class="ltx_Math" alttext="F(1)=G(1)" display="inline"><mrow><mrow><mi>F</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mn>1</mn><mo stretchy="false">)</mo></mrow></mrow><mo>=</mo><mrow><mi>G</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mn>1</mn><mo stretchy="false">)</mo></mrow></mrow></mrow></math> be the base case for an inductive
-proof and suppose <math id="S2.p4.m11" class="ltx_Math" alttext="F(n)=G(n)" display="inline"><mrow><mrow><mi>F</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>n</mi><mo stretchy="false">)</mo></mrow></mrow><mo>=</mo><mrow><mi>G</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>n</mi><mo stretchy="false">)</mo></mrow></mrow></mrow></math> for some natural number <math id="S2.p4.m12" class="ltx_Math" alttext="n" display="inline"><mi>n</mi></math>. Well
-then <math id="S2.p4.m13" class="ltx_Math" alttext="F(n^{+})=f(F(n))=f(G(n))=G(n^{+})" display="inline"><mrow><mrow><mi>F</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><msup><mi>n</mi><mo>+</mo></msup><mo stretchy="false">)</mo></mrow></mrow><mo>=</mo><mrow><mi>f</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mrow><mi>F</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>n</mi><mo stretchy="false">)</mo></mrow></mrow><mo stretchy="false">)</mo></mrow></mrow><mo>=</mo><mrow><mi>f</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mrow><mi>G</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>n</mi><mo stretchy="false">)</mo></mrow></mrow><mo stretchy="false">)</mo></mrow></mrow><mo>=</mo><mrow><mi>G</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><msup><mi>n</mi><mo>+</mo></msup><mo stretchy="false">)</mo></mrow></mrow></mrow></math>. So by the principle of
-mathematical induction, <math id="S2.p4.m14" class="ltx_Math" alttext="F" display="inline"><mi>F</mi></math> and <math id="S2.p4.m15" class="ltx_Math" alttext="G" display="inline"><mi>G</mi></math> are the same function.
+<math id="S2.p5.m4" class="ltx_Math" alttext="F:\mathbb{N}\rightarrow\mathbb{X}" display="inline"><mrow><mi>F</mi><mo lspace="0.278em" rspace="0.278em">:</mo><mrow><mi>ℕ</mi><mo stretchy="false">→</mo><mi>𝕏</mi></mrow></mrow></math> and
+<math id="S2.p5.m5" class="ltx_Math" alttext="G:\mathbb{N}\rightarrow\mathbb{X}" display="inline"><mrow><mi>G</mi><mo lspace="0.278em" rspace="0.278em">:</mo><mrow><mi>ℕ</mi><mo stretchy="false">→</mo><mi>𝕏</mi></mrow></mrow></math> where <math id="S2.p5.m6" class="ltx_Math" alttext="F(1)=G(1)=a" display="inline"><mrow><mrow><mi>F</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mn>1</mn><mo stretchy="false">)</mo></mrow></mrow><mo>=</mo><mrow><mi>G</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mn>1</mn><mo stretchy="false">)</mo></mrow></mrow><mo>=</mo><mi>a</mi></mrow></math>,
+<math id="S2.p5.m7" class="ltx_Math" alttext="F(n^{+})=f(F(n))" display="inline"><mrow><mrow><mi>F</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><msup><mi>n</mi><mo>+</mo></msup><mo stretchy="false">)</mo></mrow></mrow><mo>=</mo><mrow><mi>f</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mrow><mi>F</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>n</mi><mo stretchy="false">)</mo></mrow></mrow><mo stretchy="false">)</mo></mrow></mrow></mrow></math>, and <math id="S2.p5.m8" class="ltx_Math" alttext="G(n^{+})=f(G(n))" display="inline"><mrow><mrow><mi>G</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><msup><mi>n</mi><mo>+</mo></msup><mo stretchy="false">)</mo></mrow></mrow><mo>=</mo><mrow><mi>f</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mrow><mi>G</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>n</mi><mo stretchy="false">)</mo></mrow></mrow><mo stretchy="false">)</mo></mrow></mrow></mrow></math> for all natural
+numbers <math id="S2.p5.m9" class="ltx_Math" alttext="n" display="inline"><mi>n</mi></math>. Let <math id="S2.p5.m10" class="ltx_Math" alttext="F(1)=G(1)" display="inline"><mrow><mrow><mi>F</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mn>1</mn><mo stretchy="false">)</mo></mrow></mrow><mo>=</mo><mrow><mi>G</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mn>1</mn><mo stretchy="false">)</mo></mrow></mrow></mrow></math> be the base case for an inductive
+proof and suppose that <math id="S2.p5.m11" class="ltx_Math" alttext="F(n)=G(n)" display="inline"><mrow><mrow><mi>F</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>n</mi><mo stretchy="false">)</mo></mrow></mrow><mo>=</mo><mrow><mi>G</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>n</mi><mo stretchy="false">)</mo></mrow></mrow></mrow></math> for some natural number <math id="S2.p5.m12" class="ltx_Math" alttext="n" display="inline"><mi>n</mi></math>.
+Well then <math id="S2.p5.m13" class="ltx_Math" alttext="F(n^{+})=f(F(n))=f(G(n))=G(n^{+})" display="inline"><mrow><mrow><mi>F</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><msup><mi>n</mi><mo>+</mo></msup><mo stretchy="false">)</mo></mrow></mrow><mo>=</mo><mrow><mi>f</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mrow><mi>F</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>n</mi><mo stretchy="false">)</mo></mrow></mrow><mo stretchy="false">)</mo></mrow></mrow><mo>=</mo><mrow><mi>f</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mrow><mi>G</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>n</mi><mo stretchy="false">)</mo></mrow></mrow><mo stretchy="false">)</mo></mrow></mrow><mo>=</mo><mrow><mi>G</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><msup><mi>n</mi><mo>+</mo></msup><mo stretchy="false">)</mo></mrow></mrow></mrow></math>. So by the principle
+of mathematical induction, <math id="S2.p5.m14" class="ltx_Math" alttext="F" display="inline"><mi>F</mi></math> and <math id="S2.p5.m15" class="ltx_Math" alttext="G" display="inline"><mi>G</mi></math> are the same function.
 ∎</p>
+</div>
+</div>
+</section>
+<section id="S3" class="ltx_section">
+<h2 class="ltx_title ltx_title_section">
+<span class="ltx_tag ltx_tag_section">3 </span>Examples</h2>
+
+<div id="S3.p1" class="ltx_para">
+<p class="ltx_p">Let’s define a couple of familiar concepts by induction.</p>
+</div>
+<div id="S3.Thmdefinition1" class="ltx_theorem ltx_theorem_definition">
+<h6 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold">Definition 3.1</span></span><span class="ltx_text ltx_font_bold"> </span>(Addition)<span class="ltx_text ltx_font_bold">.</span>
+</h6>
+<div id="S3.Thmdefinition1.p1" class="ltx_para">
+<p class="ltx_p">For any natural number <math id="S3.Thmdefinition1.p1.m1" class="ltx_Math" alttext="n\in\mathbb{N}" display="inline"><mrow><mi>n</mi><mo>∈</mo><mi>ℕ</mi></mrow></math>, we have
+<math id="S3.Thmdefinition1.p1.m2" class="ltx_Math" alttext="n^{+}\in\mathbb{N}" display="inline"><mrow><msup><mi>n</mi><mo>+</mo></msup><mo>∈</mo><mi>ℕ</mi></mrow></math> by <a href="#S1.Thmtheorem2" title="Theorem 1.2. ‣ 1.2 Peano Axioms ‣ 1 Preliminaries ‣ The Recursion Theorem" class="ltx_ref ltx_refmacro_autoref"><span class="ltx_text ltx_ref_tag">Theorem 1.2</span></a>. If we apply
+<math id="S3.Thmdefinition1.p1.m3" class="ltx_Math" alttext="n^{+}" display="inline"><msup><mi>n</mi><mo>+</mo></msup></math> and <math id="S3.Thmdefinition1.p1.m4" class="ltx_Math" alttext="S" display="inline"><mi>S</mi></math> to <a href="#S2.Thmtheorem1" title="Theorem 2.1. ‣ 2 Existence and Uniqueness ‣ The Recursion Theorem" class="ltx_ref ltx_refmacro_autoref"><span class="ltx_text ltx_ref_tag">Theorem 2.1</span></a> and
+<a href="#S2.Thmcorollary1" title="Corollary 2.1. ‣ 2 Existence and Uniqueness ‣ The Recursion Theorem" class="ltx_ref ltx_refmacro_autoref"><span class="ltx_text ltx_ref_tag">Corollary 2.1</span></a>, we can define a unique function
+<math id="S3.Thmdefinition1.p1.m5" class="ltx_Math" alttext="s_{n}:\mathbb{N}\rightarrow\mathbb{N}" display="inline"><mrow><msub><mi>s</mi><mi>n</mi></msub><mo lspace="0.278em" rspace="0.278em">:</mo><mrow><mi>ℕ</mi><mo stretchy="false">→</mo><mi>ℕ</mi></mrow></mrow></math> where
+<math id="S3.Thmdefinition1.p1.m6" class="ltx_Math" alttext="s_{n}(1)=n^{+}" display="inline"><mrow><mrow><msub><mi>s</mi><mi>n</mi></msub><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mn>1</mn><mo stretchy="false">)</mo></mrow></mrow><mo>=</mo><msup><mi>n</mi><mo>+</mo></msup></mrow></math> and <math id="S3.Thmdefinition1.p1.m7" class="ltx_Math" alttext="s_{n}(m^{+})=s_{n}(m)^{+}" display="inline"><mrow><mrow><msub><mi>s</mi><mi>n</mi></msub><mo>⁢</mo><mrow><mo stretchy="false">(</mo><msup><mi>m</mi><mo>+</mo></msup><mo stretchy="false">)</mo></mrow></mrow><mo>=</mo><mrow><msub><mi>s</mi><mi>n</mi></msub><mo>⁢</mo><msup><mrow><mo stretchy="false">(</mo><mi>m</mi><mo stretchy="false">)</mo></mrow><mo>+</mo></msup></mrow></mrow></math> for all
+<math id="S3.Thmdefinition1.p1.m8" class="ltx_Math" alttext="m\in\mathbb{N}" display="inline"><mrow><mi>m</mi><mo>∈</mo><mi>ℕ</mi></mrow></math>. For any such function <math id="S3.Thmdefinition1.p1.m9" class="ltx_Math" alttext="s_{n}" display="inline"><msub><mi>s</mi><mi>n</mi></msub></math> and
+<math id="S3.Thmdefinition1.p1.m10" class="ltx_Math" alttext="m\in\mathbb{N}" display="inline"><mrow><mi>m</mi><mo>∈</mo><mi>ℕ</mi></mrow></math>, we refer to <math id="S3.Thmdefinition1.p1.m11" class="ltx_Math" alttext="s_{n}(m)" display="inline"><mrow><msub><mi>s</mi><mi>n</mi></msub><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>m</mi><mo stretchy="false">)</mo></mrow></mrow></math> as <math id="S3.Thmdefinition1.p1.m12" class="ltx_Math" alttext="n+m" display="inline"><mrow><mi>n</mi><mo>+</mo><mi>m</mi></mrow></math> and call it
+the <span class="ltx_text ltx_font_italic">sum of</span> <math id="S3.Thmdefinition1.p1.m13" class="ltx_Math" alttext="n" display="inline"><mi>n</mi></math> <span class="ltx_text ltx_font_italic">and</span> <math id="S3.Thmdefinition1.p1.m14" class="ltx_Math" alttext="m" display="inline"><mi>m</mi></math>.</p>
+</div>
+</div>
+<div id="S3.Thmexample1" class="ltx_theorem ltx_theorem_example">
+<h6 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold">Example 3.1</span></span><span class="ltx_text ltx_font_bold">.</span>
+</h6>
+<div id="S3.Thmexample1.p1" class="ltx_para">
+<p class="ltx_p">Recall <a href="#S1.Thmexample3" title="Example 1.3. ‣ 1.1 Natural Numbers ‣ 1 Preliminaries ‣ The Recursion Theorem" class="ltx_ref ltx_refmacro_autoref"><span class="ltx_text ltx_ref_tag">Example 1.3</span></a>. We can see that</p>
+<table id="S3.Ex2" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="S3.Ex2.m1" class="ltx_Math" alttext="2+2=s_{2}(2)=s_{2}(1)^{+}=(2^{+})^{+}=3^{+}=4" display="block"><mrow><mrow><mn>2</mn><mo>+</mo><mn>2</mn></mrow><mo>=</mo><mrow><msub><mi>s</mi><mn>2</mn></msub><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mn>2</mn><mo stretchy="false">)</mo></mrow></mrow><mo>=</mo><mrow><msub><mi>s</mi><mn>2</mn></msub><mo>⁢</mo><msup><mrow><mo stretchy="false">(</mo><mn>1</mn><mo stretchy="false">)</mo></mrow><mo>+</mo></msup></mrow><mo>=</mo><msup><mrow><mo stretchy="false">(</mo><msup><mn>2</mn><mo>+</mo></msup><mo stretchy="false">)</mo></mrow><mo>+</mo></msup><mo>=</mo><msup><mn>3</mn><mo>+</mo></msup><mo>=</mo><mn>4</mn></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table>
+</div>
+</div>
+<div id="S3.Thmdefinition2" class="ltx_theorem ltx_theorem_definition">
+<h6 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold">Definition 3.2</span></span><span class="ltx_text ltx_font_bold"> </span>(Multiplication)<span class="ltx_text ltx_font_bold">.</span>
+</h6>
+<div id="S3.Thmdefinition2.p1" class="ltx_para">
+<p class="ltx_p">For every <math id="S3.Thmdefinition2.p1.m1" class="ltx_Math" alttext="n\in\mathbb{N}" display="inline"><mrow><mi>n</mi><mo>∈</mo><mi>ℕ</mi></mrow></math>, we take
+<math id="S3.Thmdefinition2.p1.m2" class="ltx_Math" alttext="s_{n}:\mathbb{N}\rightarrow\mathbb{N}" display="inline"><mrow><msub><mi>s</mi><mi>n</mi></msub><mo lspace="0.278em" rspace="0.278em">:</mo><mrow><mi>ℕ</mi><mo stretchy="false">→</mo><mi>ℕ</mi></mrow></mrow></math> from
+<a href="#S3.Thmdefinition1" title="Definition 3.1 (Addition). ‣ 3 Examples ‣ The Recursion Theorem" class="ltx_ref ltx_refmacro_autoref"><span class="ltx_text ltx_ref_tag">Definition 3.1</span></a> and we define
+<math id="S3.Thmdefinition2.p1.m3" class="ltx_Math" alttext="p_{n}:\mathbb{N}\rightarrow\mathbb{N}" display="inline"><mrow><msub><mi>p</mi><mi>n</mi></msub><mo lspace="0.278em" rspace="0.278em">:</mo><mrow><mi>ℕ</mi><mo stretchy="false">→</mo><mi>ℕ</mi></mrow></mrow></math> where
+<math id="S3.Thmdefinition2.p1.m4" class="ltx_Math" alttext="p_{n}(1)=n" display="inline"><mrow><mrow><msub><mi>p</mi><mi>n</mi></msub><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mn>1</mn><mo stretchy="false">)</mo></mrow></mrow><mo>=</mo><mi>n</mi></mrow></math> and 
+<br class="ltx_break"><math id="S3.Thmdefinition2.p1.m5" class="ltx_Math" alttext="p_{n}(m^{+})=s_{n}(p_{n}(m))=n+p_{n}(m)" display="inline"><mrow><mrow><msub><mi>p</mi><mi>n</mi></msub><mo>⁢</mo><mrow><mo stretchy="false">(</mo><msup><mi>m</mi><mo>+</mo></msup><mo stretchy="false">)</mo></mrow></mrow><mo>=</mo><mrow><msub><mi>s</mi><mi>n</mi></msub><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mrow><msub><mi>p</mi><mi>n</mi></msub><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>m</mi><mo stretchy="false">)</mo></mrow></mrow><mo stretchy="false">)</mo></mrow></mrow><mo>=</mo><mrow><mi>n</mi><mo>+</mo><mrow><msub><mi>p</mi><mi>n</mi></msub><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>m</mi><mo stretchy="false">)</mo></mrow></mrow></mrow></mrow></math>.
+We refer to <math id="S3.Thmdefinition2.p1.m6" class="ltx_Math" alttext="p_{n}(m)" display="inline"><mrow><msub><mi>p</mi><mi>n</mi></msub><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>m</mi><mo stretchy="false">)</mo></mrow></mrow></math> as <math id="S3.Thmdefinition2.p1.m7" class="ltx_Math" alttext="n\cdot m" display="inline"><mrow><mi>n</mi><mo lspace="0.222em" rspace="0.222em">⋅</mo><mi>m</mi></mrow></math>. We call
+this the <span class="ltx_text ltx_font_italic">product of</span> <math id="S3.Thmdefinition2.p1.m8" class="ltx_Math" alttext="n" display="inline"><mi>n</mi></math> <span class="ltx_text ltx_font_italic">and</span> <math id="S3.Thmdefinition2.p1.m9" class="ltx_Math" alttext="m" display="inline"><mi>m</mi></math> or <math id="S3.Thmdefinition2.p1.m10" class="ltx_Math" alttext="n" display="inline"><mi>n</mi></math>
+<span class="ltx_text ltx_font_italic">multiplied</span> by <math id="S3.Thmdefinition2.p1.m11" class="ltx_Math" alttext="m" display="inline"><mi>m</mi></math>.</p>
+</div>
+</div>
+<div id="S3.Thmexample2" class="ltx_theorem ltx_theorem_example">
+<h6 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold">Example 3.2</span></span><span class="ltx_text ltx_font_bold">.</span>
+</h6>
+<div id="S3.Thmexample2.p1" class="ltx_para">
+<p class="ltx_p">Recall <a href="#S3.Ex2" title="Example 3.1. ‣ 3 Examples ‣ The Recursion Theorem" class="ltx_ref ltx_refmacro_autoref"><span class="ltx_text ltx_ref_tag">Example 3.1</span></a>. We can see that</p>
+<table id="S3.EGx1" class="ltx_equationgroup ltx_eqn_align ltx_eqn_table">
+
+<tbody id="S3.Ex3"><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_td ltx_align_right ltx_eqn_cell"><math id="S3.Ex3.m1" class="ltx_Math" alttext="\displaystyle 2\cdot 3" display="inline"><mrow><mn>2</mn><mo lspace="0.222em" rspace="0.222em">⋅</mo><mn>3</mn></mrow></math></td>
+<td class="ltx_td ltx_align_left ltx_eqn_cell"><math id="S3.Ex3.m2" class="ltx_Math" alttext="\displaystyle=2+(2\cdot 2)" display="inline"><mrow><mi></mi><mo>=</mo><mrow><mn>2</mn><mo>+</mo><mrow><mo stretchy="false">(</mo><mrow><mn>2</mn><mo lspace="0.222em" rspace="0.222em">⋅</mo><mn>2</mn></mrow><mo stretchy="false">)</mo></mrow></mrow></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+<tbody id="S3.Ex4"><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_td ltx_eqn_cell"></td>
+<td class="ltx_td ltx_align_left ltx_eqn_cell"><math id="S3.Ex4.m1" class="ltx_Math" alttext="\displaystyle=2+(2+(2\cdot 1))" display="inline"><mrow><mi></mi><mo>=</mo><mrow><mn>2</mn><mo>+</mo><mrow><mo stretchy="false">(</mo><mrow><mn>2</mn><mo>+</mo><mrow><mo stretchy="false">(</mo><mrow><mn>2</mn><mo lspace="0.222em" rspace="0.222em">⋅</mo><mn>1</mn></mrow><mo stretchy="false">)</mo></mrow></mrow><mo stretchy="false">)</mo></mrow></mrow></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+<tbody id="S3.Ex5"><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_td ltx_eqn_cell"></td>
+<td class="ltx_td ltx_align_left ltx_eqn_cell"><math id="S3.Ex5.m1" class="ltx_Math" alttext="\displaystyle=2+(2+2)" display="inline"><mrow><mi></mi><mo>=</mo><mrow><mn>2</mn><mo>+</mo><mrow><mo stretchy="false">(</mo><mrow><mn>2</mn><mo>+</mo><mn>2</mn></mrow><mo stretchy="false">)</mo></mrow></mrow></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+<tbody id="S3.Ex6"><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_td ltx_eqn_cell"></td>
+<td class="ltx_td ltx_align_left ltx_eqn_cell"><math id="S3.Ex6.m1" class="ltx_Math" alttext="\displaystyle=2+4\text{ by \autoref{example:two_plus_two}}" display="inline"><mrow><mi></mi><mo>=</mo><mrow><mn>2</mn><mo>+</mo><mrow><mn>4</mn><mo>⁢</mo><mrow><mtext> by </mtext><mtext class="ltx_refmacro_autoref"><a href="#S3.Ex2" title="Example 3.1. ‣ 3 Examples ‣ The Recursion Theorem" class="ltx_ref ltx_refmacro_autoref"><span class="ltx_text ltx_ref_tag">Example 3.1</span></a></mtext></mrow></mrow></mrow></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+<tbody id="S3.Ex7"><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_td ltx_eqn_cell"></td>
+<td class="ltx_td ltx_align_left ltx_eqn_cell"><math id="S3.Ex7.m1" class="ltx_Math" alttext="\displaystyle=(2+3)^{+}" display="inline"><mrow><mi></mi><mo>=</mo><msup><mrow><mo stretchy="false">(</mo><mrow><mn>2</mn><mo>+</mo><mn>3</mn></mrow><mo stretchy="false">)</mo></mrow><mo>+</mo></msup></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+<tbody id="S3.Ex8"><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_td ltx_eqn_cell"></td>
+<td class="ltx_td ltx_align_left ltx_eqn_cell"><math id="S3.Ex8.m1" class="ltx_Math" alttext="\displaystyle=((2+2)^{+})^{+}" display="inline"><mrow><mi></mi><mo>=</mo><msup><mrow><mo stretchy="false">(</mo><msup><mrow><mo stretchy="false">(</mo><mrow><mn>2</mn><mo>+</mo><mn>2</mn></mrow><mo stretchy="false">)</mo></mrow><mo>+</mo></msup><mo stretchy="false">)</mo></mrow><mo>+</mo></msup></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+<tbody id="S3.Ex9"><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_td ltx_eqn_cell"></td>
+<td class="ltx_td ltx_align_left ltx_eqn_cell"><math id="S3.Ex9.m1" class="ltx_Math" alttext="\displaystyle=(4^{+})^{+}\text{ by \autoref{example:two_plus_two}}" display="inline"><mrow><mi></mi><mo>=</mo><mrow><msup><mrow><mo stretchy="false">(</mo><msup><mn>4</mn><mo>+</mo></msup><mo stretchy="false">)</mo></mrow><mo>+</mo></msup><mo>⁢</mo><mrow><mtext> by </mtext><mtext class="ltx_refmacro_autoref"><a href="#S3.Ex2" title="Example 3.1. ‣ 3 Examples ‣ The Recursion Theorem" class="ltx_ref ltx_refmacro_autoref"><span class="ltx_text ltx_ref_tag">Example 3.1</span></a></mtext></mrow></mrow></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+<tbody id="S3.Ex10"><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_td ltx_eqn_cell"></td>
+<td class="ltx_td ltx_align_left ltx_eqn_cell"><math id="S3.Ex10.m1" class="ltx_Math" alttext="\displaystyle=6" display="inline"><mrow><mi></mi><mo>=</mo><mn>6</mn></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table>
 </div>
 </div>
 </section>
@@ -159,7 +487,7 @@ mathematical induction, <math id="S2.p4.m14" class="ltx_Math" alttext="F" displa
 </span>
 <span class="ltx_bibblock"> <span class="ltx_text ltx_bib_publisher">Springer New York, NY</span>.
 </span>
-<span class="ltx_bibblock ltx_bib_cited">Cited by: <a href="#footnote2" title="In Definition 1.1. ‣ 1 Preliminaries ‣ The Recursion Theorem" class="ltx_ref"><span class="ltx_text ltx_ref_tag">footnote 2</span></a>.
+<span class="ltx_bibblock ltx_bib_cited">Cited by: <a href="#S1.p1" title="1 Preliminaries ‣ The Recursion Theorem" class="ltx_ref"><span class="ltx_text ltx_ref_tag">§1</span></a>.
 </span>
 </li>
 </ul>
@@ -167,7 +495,7 @@ mathematical induction, <math id="S2.p4.m14" class="ltx_Math" alttext="F" displa
 </article>
 </div>
 <footer class="ltx_page_footer">
-<div class="ltx_page_logo">Generated  on Sat Nov 23 16:28:27 2024 by <a href="http://dlmf.nist.gov/LaTeXML/" class="ltx_LaTeXML_logo"><span style="letter-spacing:-0.2em; margin-right:0.1em;">L<span class="ltx_font_smallcaps" style="position:relative; bottom:2.2pt;">a</span>T<span class="ltx_font_smallcaps" style="font-size:120%;position:relative; bottom:-0.2ex;">e</span></span><span style="font-size:90%; position:relative; bottom:-0.2ex;">XML</span><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAsAAAAOCAYAAAD5YeaVAAAAAXNSR0IArs4c6QAAAAZiS0dEAP8A/wD/oL2nkwAAAAlwSFlzAAALEwAACxMBAJqcGAAAAAd0SU1FB9wKExQZLWTEaOUAAAAddEVYdENvbW1lbnQAQ3JlYXRlZCB3aXRoIFRoZSBHSU1Q72QlbgAAAdpJREFUKM9tkL+L2nAARz9fPZNCKFapUn8kyI0e4iRHSR1Kb8ng0lJw6FYHFwv2LwhOpcWxTjeUunYqOmqd6hEoRDhtDWdA8ApRYsSUCDHNt5ul13vz4w0vWCgUnnEc975arX6ORqN3VqtVZbfbTQC4uEHANM3jSqXymFI6yWazP2KxWAXAL9zCUa1Wy2tXVxheKA9YNoR8Pt+aTqe4FVVVvz05O6MBhqUIBGk8Hn8HAOVy+T+XLJfLS4ZhTiRJgqIoVBRFIoric47jPnmeB1mW/9rr9ZpSSn3Lsmir1fJZlqWlUonKsvwWwD8ymc/nXwVBeLjf7xEKhdBut9Hr9WgmkyGEkJwsy5eHG5vN5g0AKIoCAEgkEkin0wQAfN9/cXPdheu6P33fBwB4ngcAcByHJpPJl+fn54mD3Gg0NrquXxeLRQAAwzAYj8cwTZPwPH9/sVg8PXweDAauqqr2cDjEer1GJBLBZDJBs9mE4zjwfZ85lAGg2+06hmGgXq+j3+/DsixYlgVN03a9Xu8jgCNCyIegIAgx13Vfd7vdu+FweG8YRkjXdWy329+dTgeSJD3ieZ7RNO0VAXAPwDEAO5VKndi2fWrb9jWl9Esul6PZbDY9Go1OZ7PZ9z/lyuD3OozU2wAAAABJRU5ErkJggg==" alt="Mascot Sammy"></a>
+<div class="ltx_page_logo">Generated  on Sun Nov 24 07:53:42 2024 by <a href="http://dlmf.nist.gov/LaTeXML/" class="ltx_LaTeXML_logo"><span style="letter-spacing:-0.2em; margin-right:0.1em;">L<span class="ltx_font_smallcaps" style="position:relative; bottom:2.2pt;">a</span>T<span class="ltx_font_smallcaps" style="font-size:120%;position:relative; bottom:-0.2ex;">e</span></span><span style="font-size:90%; position:relative; bottom:-0.2ex;">XML</span><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAsAAAAOCAYAAAD5YeaVAAAAAXNSR0IArs4c6QAAAAZiS0dEAP8A/wD/oL2nkwAAAAlwSFlzAAALEwAACxMBAJqcGAAAAAd0SU1FB9wKExQZLWTEaOUAAAAddEVYdENvbW1lbnQAQ3JlYXRlZCB3aXRoIFRoZSBHSU1Q72QlbgAAAdpJREFUKM9tkL+L2nAARz9fPZNCKFapUn8kyI0e4iRHSR1Kb8ng0lJw6FYHFwv2LwhOpcWxTjeUunYqOmqd6hEoRDhtDWdA8ApRYsSUCDHNt5ul13vz4w0vWCgUnnEc975arX6ORqN3VqtVZbfbTQC4uEHANM3jSqXymFI6yWazP2KxWAXAL9zCUa1Wy2tXVxheKA9YNoR8Pt+aTqe4FVVVvz05O6MBhqUIBGk8Hn8HAOVy+T+XLJfLS4ZhTiRJgqIoVBRFIoric47jPnmeB1mW/9rr9ZpSSn3Lsmir1fJZlqWlUonKsvwWwD8ymc/nXwVBeLjf7xEKhdBut9Hr9WgmkyGEkJwsy5eHG5vN5g0AKIoCAEgkEkin0wQAfN9/cXPdheu6P33fBwB4ngcAcByHJpPJl+fn54mD3Gg0NrquXxeLRQAAwzAYj8cwTZPwPH9/sVg8PXweDAauqqr2cDjEer1GJBLBZDJBs9mE4zjwfZ85lAGg2+06hmGgXq+j3+/DsixYlgVN03a9Xu8jgCNCyIegIAgx13Vfd7vdu+FweG8YRkjXdWy329+dTgeSJD3ieZ7RNO0VAXAPwDEAO5VKndi2fWrb9jWl9Esul6PZbDY9Go1OZ7PZ9z/lyuD3OozU2wAAAABJRU5ErkJggg==" alt="Mascot Sammy"></a>
 </div></footer>
 </div>
 </body>
