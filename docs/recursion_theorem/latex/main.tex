@@ -44,6 +44,10 @@
 \newcommand*{\lemmaautorefname}{Lemma}
 
 \theoremstyle{plain}
+\newtheorem{proposition}{Proposition}[section]
+\newcommand*{\propositionautorefname}{Proposition}
+
+\theoremstyle{plain}
 \newtheorem{axiom}{Axiom}[section]
 \newcommand*{\axiomautorefname}{Axiom}
 
@@ -133,23 +137,25 @@ We use the following two axioms of ZFC to define the natural numbers.
 \end{example}
 
 \begin{definition}
-  Let \( J \) be the set who's existence is guaranteed by 
+  Let \( J \) be a set who's existence is guaranteed by 
   \autoref{axiom:infinity}. We use \autoref{axiom:comprehension} to form the set 
   \[ 
     \mathbb{N} 
     = 
     \{y \in J : \forall I ( I \text{ is inductive} \Rightarrow y \in I )\}
   \] 
-  One should think of \( \mathbb{N} \) as the ``smallest" inductive set. An 
+  One should think of \( \mathbb{N} \) as the 
+  ``smallest" inductive set. An 
   element of \( \mathbb{N} \) is called a \textit{natural number}.
+  \label{def:natural_numbers}
 \end{definition}
 
 \begin{example}
+  \label{example:compact_numbers}
   \autoref{fig:natural_compact_names} shows a few compact names for natural 
   numbers that are often used in place of the set theory 
   notation\footnote{Note that \( 1 \) is considered the first natural number in 
   this post.}.
-  \label{example:compact_numbers}
 \end{example}
 
 \begin{figure}[h]
@@ -180,6 +186,10 @@ We use the following two axioms of ZFC to define the natural numbers.
     \item \(1^{+} = 2 \)
     \item \(2^{+} = 3\)
     \item \(3^{+} = 4\)
+  \end{itemize}
+  and we'll define two more compact names to be used in an informative example 
+  at the end of the post: 
+  \begin{itemize}
     \item \(4^{+} = 5\)
     \item \(5^{+} = 6\)
   \end{itemize}
@@ -189,33 +199,123 @@ We use the following two axioms of ZFC to define the natural numbers.
 \subsection{Peano Axioms}
 
 While we prove and refer to the following as theorems, it is common nomenclature 
-to refer to them as \textit{The Five Peano Axioms}.
+to refer to these as \textit{The Five Peano Axioms}.
 
 \begin{theorem}
   \( 1 \in \mathbb{N} \)
   \label{thm:first_peano_axiom}
 \end{theorem}
 
+\begin{proof}
+  Since \( 1 \) is in every inductive set, then \( 1 \in \mathbb{N} \).
+\end{proof}
+
 \begin{theorem}
   If \( n \in \mathbb{N} \), then \( n^{+} \in \mathbb{N} \).
   \label{thm:second_peano_axiom}
 \end{theorem}
 
+\begin{proof}
+  Let \( n \in \mathbb{N} \). By definition, 
+  \( \forall I ( I \text{ is inductive} \Rightarrow n \in I ) \) and so
+  for any inductive set \(K\), we can then conclude that \( n^{+} \in K \) since
+  \( n \in K \). 
+  Recall that \( n \in J \) from \autoref{def:natural_numbers}. By defintion, 
+  \( n^{+} \in J \). So we conclude from these two facts that 
+  \( n^{+} \in \mathbb{N} \).
+\end{proof}
+
 \begin{theorem}[The Principle of Mathematical Induction]
-  If \( S \subseteq \mathbb{N}, 1 \in S,\) and 
+  If \( S \subseteq \mathbb{N}, 1 \in S,\) and
   \(n \in S \Rightarrow n^{+} \in S\), then \( S = \mathbb{N} \).
   \label{thm:third_peano_axiom}
 \end{theorem}
+
+\begin{proof}
+  We will argue by subset inclusions that \( S = \mathbb{N} \). By hypothesis, 
+  we are given that \( n \in S \Rightarrow n \in \mathbb{N} \). 
+  Now suppose that \( n \in \mathbb{N} \). We can see that \( S \) is an 
+  inductive set and so by definition of \( \mathbb{N} \), \( n \in S \). 
+  Therefore, we conclude that \( S = \mathbb{N} \).
+\end{proof}
+
+\begin{definition}
+  We refer to invoking \autoref{thm:third_peano_axiom} as an \textit{argument
+  by induction}.
+\end{definition}
 
 \begin{theorem}
   For all \( n \in \mathbb{N} \), we have that \( n^{+} \neq 1 \). 
   \label{thm:fourth_peano_axiom}
 \end{theorem}
 
+\begin{proof}
+  \( n^{+} \) is nonempty and 1 is empty. So we conclude that 
+  \( n^{+} \neq 1 \).
+\end{proof}
+
+
+% \begin{axiom}[Regularity]
+%   \(
+%     \forall x (
+%       x \neq \emptyset 
+%       \Rightarrow 
+%       \exists y ( 
+%         y \in x \land (y \cap x \neq \emptyset )
+%       )
+%     ) 
+%   \)
+%   \label{ax:regularity}
+% \end{axiom}
+% 
+% \begin{lemma}
+%   \( \forall x (x \not\in x ) \)
+%   \label{lemma:x_not_in_x}
+% \end{lemma}
+% 
+% \begin{proof}
+%   Suppose that \( x \in x \) for some set \( x \). Then for the singleton 
+%   \( \{ x \} \), \autoref{ax:regularity} tells us that \( \{ x \} \) contains 
+%   an element that is disjoint from \( \{x\} \). But \( x \in x \cap \{x\} \) 
+%   and since no other elements are in \( \{x\} \), we arrive at a contradiction.
+% \end{proof}
+
+\begin{definition}
+  A set \( T \) is transitive if and only if 
+  \( x \in T \Rightarrow x \subseteq T \). 
+\end{definition}
+
+\begin{lemma}
+  Every natural number is transitive.
+  \label{lemma:nat_transitive}
+\end{lemma}
+
+\begin{proof}
+  We argue by induction. 
+  Let \( S \) be the set of all transitive natural numbers. \( 1 \in S \) 
+  trivially. Suppose \( n \in S \). Since \( n^{+} = n \cup \{n\} \), then 
+  for all \( x \in n^{+} \) either \( x \in n \) or \( x = n \). If 
+  \( x \in n \), then 
+  by our inductive hypothesis that \( n \in S \), we know that 
+  \( x \subseteq n\) which allows us to conclude that \( x \subseteq n^{+} \). 
+  If \( x = n \), then we also conclude that \( x \subseteq n^{+} \). 
+  Therefore, \( n^{+} \in S \) and so \( S = \mathbb{N} \).
+\end{proof}
+
 \begin{theorem}
   If \( n, m \in \mathbb{N}\) and \( n^{+} = m^{+} \), then \( n = m \).
   \label{thm:fifth_peano_axiom}
 \end{theorem}
+
+\begin{proof}
+  Suppose the hypothesis is true. Well then 
+  \( n \in n^{+} \Rightarrow n \in m^{+} \) and so either \( n \in m \) or 
+  \( n = m \). By the same type of observation, either \( m \in n \) or \( m = n \). 
+  If \( n \neq m\), then \( m \in n \) and \( n \in m \). 
+  Well then \autoref{lemma:nat_transitive} tells us that 
+  \( m \subseteq n \) and \( n \subseteq m \) and so \( m = n \), a 
+  contradiction. 
+\end{proof}
 
 \section{Existence and Uniqueness}
 
@@ -291,12 +391,13 @@ mathematical induction we conclude that \( \mathbb{N}  = S \).
 
 \section{Examples}
 
-Let's define a couple of familiar concepts by induction.
+Let's define a couple of familiar concepts using what we've shown.
 
 \begin{definition}[Addition]
   For any natural number \( n \in \mathbb{N}\), we have 
   \( n^{+} \in \mathbb{N}\) by \autoref{thm:second_peano_axiom}. If we apply 
-  \( n^{+} \) and \( S \) to \autoref{recursion} and 
+  \( n^{+} \) and the successor function on \( \mathbb{N} \) to 
+  \autoref{recursion} and 
   \autoref{thm:recursion_uniqueness}, we can define a unique function 
   \( s_n : \mathbb{N} \rightarrow \mathbb{N} \) where
   \( s_n(1) = n^{+} \) and \(s_n(m^{+}) = s_n(m)^{+}\) for all 
