@@ -136,6 +136,7 @@ theorem of this post can be found in that text as well.
 
 
 \begin{definition}
+  \label{def:natural_numbers}
   Let \( I \) be a set who's existence is guaranteed by 
   \autoref{axiom:infinity}. We use \autoref{axiom:comprehension} to form the set 
   \[ 
@@ -147,7 +148,6 @@ theorem of this post can be found in that text as well.
   ``smallest" inductive set\footnote{We will prove this in 
   \autoref{thm:third_peano_axiom}}. An 
   element of \( \mathbb{N} \) is called a \textit{natural number}.
-  \label{def:natural_numbers}
 \end{definition}
 
 \begin{example}
@@ -216,9 +216,9 @@ to refer to these as \textit{The Five Peano Axioms}.
 \end{theorem}
 
 \begin{proof}
-  Let \( n \in \mathbb{N} \). By definition, 
-  \( \forall I ( I \text{ is inductive} \Rightarrow n \in I ) \) and so
-  for any inductive set \(K\), we can then conclude that \( n^{+} \in K \) since
+  Let \( n \in \mathbb{N} \). By definition 
+  \( \forall I ( I \text{ is inductive} \Rightarrow n \in I ) \), and so
+  for any inductive set \(K\) we can conclude that \( n^{+} \in K \) since
   \( n \in K \). 
   Recall that \( n \in I \) from \autoref{def:natural_numbers}. By defintion, 
   \( n^{+} \in I \). So we conclude from these two facts that 
@@ -253,7 +253,7 @@ to refer to these as \textit{The Five Peano Axioms}.
 
 \begin{proof}
   Let \( n \in \mathbb{N} \). Recall that \( n^{+} = n \cup \{ n \} \) and so 
-  so \( n \in n^{+} \). Well \( n \not\in \emptyset \) and so it cannot be the 
+  \( n \in n^{+} \). Well \( n \not\in \emptyset \) and so it cannot be the 
   case that \( n^{+} = 1 \). Therefore \( n^{+} \neq 1 \).
 \end{proof}
 
