@@ -91,27 +91,10 @@ the end.
 \section{Preliminaries}
 
 If the following material doesn't make much sense, then a great review 
-can be found in the first half of \cite{naiiveSet}. The proof of the main 
-theorem for this post can be found in that text as well.
+can be found in the first half of \cite{naiiveSet}. A proof for the main 
+theorem of this post can be found in that text as well.
 
 \subsection{Natural Numbers}
-
-We use the following two axioms of ZFC to define the natural numbers.
-
-\begin{axiom}[Infinity]
-  \( \exists x ( \emptyset \in x \land \forall y \in x (y \cup \{y\} \in x))\)
-  \label{axiom:infinity}
-\end{axiom}
-
-\begin{axiom}[Comprehension]
-  \( 
-    \forall v \exists y \forall x 
-    (x \in y \Leftrightarrow x \in v \land \phi(x)) 
-  \) 
-  where 
-  \( \phi \) is a formula that \( y \) is not free in.
-  \label{axiom:comprehension}
-\end{axiom}
 
 \begin{definition}
   A set \( I \) is inductive if and only if \( \emptyset \in I \) and 
@@ -119,7 +102,7 @@ We use the following two axioms of ZFC to define the natural numbers.
 \end{definition}
 
 \begin{example}
-  Some examples of elements of an inductive set are 
+  Here are some elements one would find in an inductive set
   \begin{itemize}
     \item \( \emptyset \)
     \item \( \emptyset \cup \{\emptyset\} = \{\emptyset\}\)
@@ -136,16 +119,33 @@ We use the following two axioms of ZFC to define the natural numbers.
   \label{example:inductive_set}
 \end{example}
 
+\begin{axiom}[Infinity]
+  \( \exists I ( I \text{ is inductive})\)
+  \label{axiom:infinity}
+\end{axiom}
+
+\begin{axiom}[Comprehension]
+  \( 
+    \forall v \exists y \forall x 
+    (x \in y \Leftrightarrow x \in v \land \phi(x)) 
+  \) 
+  where 
+  \( \phi \) is a formula that \( y \) is not free in.
+  \label{axiom:comprehension}
+\end{axiom}
+
+
 \begin{definition}
-  Let \( J \) be a set who's existence is guaranteed by 
+  Let \( I \) be a set who's existence is guaranteed by 
   \autoref{axiom:infinity}. We use \autoref{axiom:comprehension} to form the set 
   \[ 
     \mathbb{N} 
     = 
-    \{y \in J : \forall I ( I \text{ is inductive} \Rightarrow y \in I )\}
+    \{y \in I : \forall J ( J \text{ is inductive} \Rightarrow y \in J )\}
   \] 
   One should think of \( \mathbb{N} \) as the 
-  ``smallest" inductive set. An 
+  ``smallest" inductive set\footnote{We will prove this in 
+  \autoref{thm:third_peano_axiom}}. An 
   element of \( \mathbb{N} \) is called a \textit{natural number}.
   \label{def:natural_numbers}
 \end{definition}
@@ -187,8 +187,8 @@ We use the following two axioms of ZFC to define the natural numbers.
     \item \(2^{+} = 3\)
     \item \(3^{+} = 4\)
   \end{itemize}
-  and we'll define two more compact names to be used in an informative example 
-  at the end of the post: 
+  and we'll define two more compact names here to be used in an informative 
+  example at the end of the post: 
   \begin{itemize}
     \item \(4^{+} = 5\)
     \item \(5^{+} = 6\)
@@ -220,21 +220,23 @@ to refer to these as \textit{The Five Peano Axioms}.
   \( \forall I ( I \text{ is inductive} \Rightarrow n \in I ) \) and so
   for any inductive set \(K\), we can then conclude that \( n^{+} \in K \) since
   \( n \in K \). 
-  Recall that \( n \in J \) from \autoref{def:natural_numbers}. By defintion, 
-  \( n^{+} \in J \). So we conclude from these two facts that 
+  Recall that \( n \in I \) from \autoref{def:natural_numbers}. By defintion, 
+  \( n^{+} \in I \). So we conclude from these two facts that 
   \( n^{+} \in \mathbb{N} \).
 \end{proof}
 
-\begin{theorem}[The Principle of Mathematical Induction]
-  If \( S \subseteq \mathbb{N}, 1 \in S,\) and
-  \(n \in S \Rightarrow n^{+} \in S\), then \( S = \mathbb{N} \).
+\newpage
+
+\begin{theorem}[Principle of Mathematical Induction]
+  If \( S \) is an inductive subset of \( \mathbb{N} \), then 
+  \( S = \mathbb{N} \).
   \label{thm:third_peano_axiom}
 \end{theorem}
 
 \begin{proof}
   We will argue by subset inclusions that \( S = \mathbb{N} \). By hypothesis, 
-  we are given that \( n \in S \Rightarrow n \in \mathbb{N} \). 
-  Now suppose that \( n \in \mathbb{N} \). We can see that \( S \) is an 
+  we are given that \( S \subseteq \mathbb{N} \). 
+  Now suppose that \( n \in \mathbb{N} \). By hypothesis, \( S \) is an 
   inductive set and so by definition of \( \mathbb{N} \), \( n \in S \). 
   Therefore, we conclude that \( S = \mathbb{N} \).
 \end{proof}
@@ -250,8 +252,9 @@ to refer to these as \textit{The Five Peano Axioms}.
 \end{theorem}
 
 \begin{proof}
-  \( n^{+} \) is nonempty and 1 is empty. So we conclude that 
-  \( n^{+} \neq 1 \).
+  Let \( n \in \mathbb{N} \). Recall that \( n^{+} = n \cup \{ n \} \) and so 
+  so \( n \in n^{+} \). Well \( n \not\in \emptyset \) and so it cannot be the 
+  case that \( n^{+} = 1 \). Therefore \( n^{+} \neq 1 \).
 \end{proof}
 
 
@@ -299,7 +302,7 @@ to refer to these as \textit{The Five Peano Axioms}.
   by our inductive hypothesis that \( n \in S \), we know that 
   \( x \subseteq n\) which allows us to conclude that \( x \subseteq n^{+} \). 
   If \( x = n \), then we also conclude that \( x \subseteq n^{+} \). 
-  Therefore, \( n^{+} \in S \) and so \( S = \mathbb{N} \).
+  Therefore, \( n^{+} \in S \) which completes the inductive argument.
 \end{proof}
 
 \begin{theorem}
@@ -313,13 +316,13 @@ to refer to these as \textit{The Five Peano Axioms}.
   \( n = m \). By the same type of observation, either \( m \in n \) or \( m = n \). 
   If \( n \neq m\), then \( m \in n \) and \( n \in m \). 
   Well then \autoref{lemma:nat_transitive} tells us that 
-  \( m \subseteq n \) and \( n \subseteq m \) and so \( m = n \), a 
-  contradiction. 
+  \( m \subseteq n \) and \( n \subseteq m \) and so \( n = m \), a 
+  contradiction. Therefore it must be the case that \( n = m \).
 \end{proof}
 
 \section{Existence and Uniqueness}
 
-\begin{theorem}
+\begin{theorem}[Recursion]
   For any set \( X \), if \( a \in X \) and \( f : X \rightarrow X \), then 
   there exists a function \( u: \mathbb{N} \rightarrow X \) such that 
   \( u(1) = a \) and \( u(n^{+}) = f(u(n)) \) for all other natural numbers 
@@ -344,32 +347,52 @@ function we are looking for.
 
 Suppose that \( (1, b) \in u \), \( a \neq b\), and consider the set 
 \( M = u \setminus \{ (1,b) \} \).  We claim that \( (n^{+}, f(x)) \in M \) 
-whenever \( ( n, x ) \in M \). If that weren't the case then some 
-\( (n^{+}, f(x)) \) would not be present in \( M \) for some \( (n,x) \in M \). 
-Well by the definition of \( M \), for all \( \alpha \) we have that 
+whenever \( ( n, x ) \in M \). Since \( (1, a) \in M \), this will give us that 
+\( M \in \mathcal{C} \) and 
+\( u \not\subseteq M \) which is a contradiction to \( u \) being the 
+intersection of all members of \( u \). That will then allow us to say that 
+\( (1,a) \in u \) and for all \( (1,b) \in u \) it would be the case that 
+\( a = b \). 
+
+So suppose that \( (n^{+}, f(x)) \) is not present in \( M \) for some 
+\( (n,x) \in M \). Well by the definition of \( M \), for all \( \alpha \) 
+we have that 
 \( (\alpha \in u \land \alpha \neq (1,b)) \rightarrow \alpha \in M \) which 
-implies that if \( \alpha \not\in M \), then 
+implies by contraposition that if \( \alpha \not\in M \), then 
 \( \alpha \not\in u \lor \alpha = (1, b) \). Well  it can't be the case that 
-\( (1,b) = (n^{+},f(x)) \) by \autoref{thm:fourth_peano_axiom}. So then we must 
+\( (n^{+},f(x)) = (1,b) \) by \autoref{thm:fourth_peano_axiom}. So then we must 
 conclude that \( (n^{+}, f(x)) \not\in u \) which 
-contradicts \( u \)'s initial construction since \( (n,x) \in u \) by the 
-assumption that \( (n,x) \in M \). Therefore, since \((1,a) \in M \) and for any 
-other \( (1,b) \in M \) we know that \( a = b \), we conclude that 
-\( 1 \in S \). 
+contradicts \( u \)'s construction since \( (n,x) \in u \) by the 
+assumption that \( (n,x) \in M \). We now must conclude that  
+\( M \in \mathcal{C} \) which gives us the base case for our inductive argument
+as discussed in the previous paragraph.
 
 Now suppose that \( n \in S \) which implies that there is an \( (n,x) \in u \) 
 for at most one \( x \). It follows from the definition of \( u \) that 
 \( (n^{+}, f(x)) \in u \). Now if \( n^{+} \) isn't in \( S \), then there 
-exists \( (n^{+}, y) \in u \) such that \( f(x) \neq y \). Consider the set 
-\( J = u \setminus \{(n^{+},y)\} \) and some \( (m, t) \in J \). If \( m = n \), 
-then \( t = x \) since \( n \in S \) and so 
+exists \( (n^{+}, y) \in u \) such that \( f(x) \neq y \). Suppose that this 
+is the case and consider the set 
+\( J = u \setminus \{(n^{+},y)\} \) with some element \( (m, t) \in J \). 
+
+If \( m = n \), then \( t = x \) since \( n \in S \) and so 
 \( (n^{+}, f(x)) = (m^{+},f(t)) \in J \). By construction of J, we note that 
-\( \alpha \not\in J \rightarrow (\alpha \not\in u \lor \alpha = (n^{+},y))\). 
-So if \( m \neq n \), then we know that \( m^{+} \neq n^{+} \) by the 
-\autoref{thm:fifth_peano_axiom} and so if \( (m^{+}, f(t)) \not\in J \) then we 
-must conclude that \( (m^{+}, f(t)) \not\in u \) which is a contradiction to the 
-construction of \( u \). So \( n^{+} \in S \) and by the principal of 
-mathematical induction we conclude that \( \mathbb{N}  = S \). 
+\( \alpha \not\in J \rightarrow (\alpha \not\in u \lor \alpha = (n^{+},y))\) 
+for all \( \alpha \). 
+So if \( m \neq n \), then we know that \( m^{+} \neq n^{+} \) by  
+\autoref{thm:fifth_peano_axiom} which means that if 
+\( (m^{+}, f(t)) \not\in J \) 
+then we must conclude that \( (m^{+}, f(t)) \not\in u \) which is a 
+contradiction to the construction of \( u \) and so \( (m^{+}, f(t)) \in J \). 
+
+Therefore in every case, \( (m^{+},f(t)) \in J \)
+whenever \((m,t) \in J \). Since it also the case that \((1,a) \in J \) since 
+\( n^{+} \neq 1 \) by \autoref{thm:fourth_peano_axiom}, we conclude that 
+\(J \in \mathcal{C} \) and \( u \not\subseteq J \) which is a contradiction to 
+\( u \)'s construction as being the intersection of all members of 
+\( \mathcal{C} \). 
+
+So \( n^{+} \in S \) and by the principal of mathematical induction we conclude 
+that \( \mathbb{N}  = S \). 
 \end{proof}
 
 \begin{corollary}
@@ -381,13 +404,18 @@ mathematical induction we conclude that \( \mathbb{N}  = S \).
   Let \( a \in X \) and \( f: X \rightarrow X \) for some set \( X \). Suppose 
   that there are two functions 
   \( F: \mathbb{N} \rightarrow \mathbb{X}  \) and 
-  \( G: \mathbb{N} \rightarrow \mathbb{X} \) where \( F(1) = G(1) = a \), 
-  \( F(n^{+}) = f(F(n)) \), and \( G(n^+) = f(G(n)) \) for all natural 
-  numbers \( n \). Let \( F(1) = G(1) \) be the base case for an inductive 
+  \( G: \mathbb{N} \rightarrow \mathbb{X} \) given by \autoref{recursion} \\
+  where \( F(1) = G(1) = a \) and for all other natural numbers \( n \) we have
+  that 
+  \( F(n^{+}) = f(F(n)) \) and \( G(n^+) = f(G(n)) \). 
+  Let \( F(1) = G(1) \) be the base case for an inductive 
   proof and suppose that \( F(n) = G(n) \) for some natural number \( n \). 
-  Well then \( F(n^{+}) = f(F(n)) = f(G(n)) = G(n^{+}) \). So by the principle 
+  Well then \( F(n^{+}) = f(F(n)) = f(G(n)) = G(n^{+}) \) by the inductive 
+  hypothesis. So by the principle 
   of mathematical induction, \( F \) and \( G \) are the same function.
 \end{proof}
+
+\newpage
 
 \section{Examples}
 
@@ -409,14 +437,14 @@ Let's define a couple of familiar concepts using what we've shown.
 
 \begin{example}
   Recall \autoref{example:successor}. We can see that 
-  \[ 2 + 2 = s_2(2) = s_2(1)^{+} = (2^{+})^{+} = 3^{+} = 4 \]
+  \[ 2 + 2 = s_2(2) = s_2(1^{+}) = s_2(1)^{+} = (2^{+})^{+} = 3^{+} = 4 \]
   \label{example:two_plus_two}
 \end{example}
 
 \begin{definition}[Multiplication]
   For every \( n \in \mathbb{N} \), we take 
   \(s_n: \mathbb{N} \rightarrow \mathbb{N} \) from 
-  \autoref{definition:addition_of_naturals} and we define 
+  \autoref{definition:addition_of_naturals} and define 
   \( p_n: \mathbb{N} \rightarrow \mathbb{N} \) where 
   \( p_n(1) = n \) and \\ \( p_n(m^{+}) = s_n(p_n(m)) = n + p_n(m) \). 
   We refer to \( p_n(m) \) as \( n \cdot m \). We call 
@@ -425,7 +453,7 @@ Let's define a couple of familiar concepts using what we've shown.
 \end{definition}
 
 \begin{example}
-  Recall \autoref{example:two_plus_two}. We can see that 
+  Recall \autoref{example:successor} once more. We can see that 
   \begin{align*}
     2 \cdot 3 &= 2 + (2 \cdot 2) \\ 
               &= 2 + (2 + (2 \cdot 1)) \\ 
