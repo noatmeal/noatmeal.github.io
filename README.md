@@ -22,6 +22,14 @@ below.
 Try not to linebreak math delimiters like \(\) unless you absolutely must in 
 order to keep the code width below 80 characters.
 
+# Installation Requirements for Contributing
+
+Please install:
+
+1. LatexML that can be found at https://math.nist.gov/~BMiller/LaTeXML/
+3. pdflatex
+2. Node JS 
+
 # Testing Locally 
 
 1. Clone the repository and run `pnpm install`
