@@ -422,7 +422,7 @@ that \( \mathbb{N}  = S \).
 
 Let's define a couple of familiar concepts using what we've shown.
 
-\begin{definition}[Addition]
+\begin{definition}
   For any natural number \( n \in \mathbb{N}\), we have 
   \( n^{+} \in \mathbb{N}\) by \autoref{thm:second_peano_axiom}. If we apply 
   \( n^{+} \) and the successor function on \( \mathbb{N} \) to 
@@ -430,40 +430,155 @@ Let's define a couple of familiar concepts using what we've shown.
   \autoref{thm:recursion_uniqueness}, we can define a unique function 
   \( s_n : \mathbb{N} \rightarrow \mathbb{N} \) where
   \( s_n(1) = n^{+} \) and \(s_n(m^{+}) = s_n(m)^{+}\) for all 
-  \( m \in \mathbb{N} \). For any such function \( s_n \) and 
-  \( m \in \mathbb{N} \), we refer to \( s_n(m) \) as \( n + m \) and call it 
-  the \textit{sum of} \( n \) \textit{and} \( m \). 
+  \( m \in \mathbb{N} \). 
+  \label{definition:primitive_addition_of_naturals}
+\end{definition}
+
+\begin{definition}[Addition]
+  Let \( + : \mathbb{N} \times \mathbb{N} \rightarrow \mathbb{N} \) be the 
+  function that maps \( +(n, m) \) to \( s_n(m) \) for all 
+  \( n, m \in \mathbb{N} \). 
+  We almost always write this using inline notation as \( n + m \) and call 
+  it the \textit{sum of} \( n \) \textit{and} \(m\). 
   \label{definition:addition_of_naturals}
 \end{definition}
 
+\paragraph{Preliminary Remark:}
+In an effort to recover some familiar looking calculations we prove the 
+following lemma and theorem.
+
+\begin{lemma}
+  \( n + 1 = n^{+} \)
+  \label{lemma:n_plus_one}
+\end{lemma}
+
+\begin{proof}
+  \( n + 1 = s_n(1) = n^{+} \)
+\end{proof}
+
+\begin{theorem}
+  \( n + (m + 1) = (n + m) + 1 \)
+\end{theorem}
+
+\begin{proof}
+  \begin{align*}
+    n + (m+1) &= s_n(m+1)  
+                 \text{
+                   by \autoref{definition:addition_of_naturals}
+                 } \\
+              &= s_n(m^{+})  
+                 \text{
+                   by \autoref{lemma:n_plus_one}
+                 } \\
+              &= (s_n(m))^{+} 
+                 \text{
+                   by \autoref{definition:primitive_addition_of_naturals}
+                 } \\
+              &= s_n(m) + 1
+                  \text{
+                   by \autoref{lemma:n_plus_one}
+                 } \\
+              &= (n + m) + 1
+                   \text{
+                   by \autoref{definition:addition_of_naturals}
+                 } \\
+  \end{align*}
+\end{proof}
+
 \begin{example}
-  Recall \autoref{example:successor}. We can see that 
-  \[ 2 + 2 = s_2(2) = s_2(1^{+}) = s_2(1)^{+} = (2^{+})^{+} = 3^{+} = 4 \]
+  Recall \autoref{example:successor}. 
+  One can deduce that 
+  \begin{itemize}
+    \item \(2 = 1^{+} = 1 + 1 \)
+    \item \(3 = 2^{+} = 2 + 1 \)
+    \item \(4 = 3^{+} = 3 + 1\)
+    \item \(5 = 4^{+} = 4 + 1\)
+    \item \(6 = 5^{+} = 5 + 1 \)
+  \end{itemize}
+  \label{example:simple_addition}
+\end{example}
+
+\begin{example}
+  Recall \autoref{example:simple_addition}. We can see that 
+  \[ 2 + 2 = 2 + (1 + 1) = (2 + 1) + 1 = 3 + 1 = 4 \]
   \label{example:two_plus_two}
 \end{example}
 
-\begin{definition}[Multiplication]
+\begin{definition}
   For every \( n \in \mathbb{N} \), we take 
   \(s_n: \mathbb{N} \rightarrow \mathbb{N} \) from 
   \autoref{definition:addition_of_naturals} and define 
   \( p_n: \mathbb{N} \rightarrow \mathbb{N} \) where 
-  \( p_n(1) = n \) and \\ \( p_n(m^{+}) = s_n(p_n(m)) = n + p_n(m) \). 
-  We refer to \( p_n(m) \) as \( n \cdot m \). We call 
-  this the \textit{product of} \( n \) \textit{and} \(m\) or \( n \) 
-  \textit{multiplied} by \( m \). 
+  \( p_n(1) = n \) and \( p_n(m^{+}) = s_n(p_n(m)) = n + p_n(m) \). 
+  \label{definition:primitive_multiplication_of_naturals}
 \end{definition}
+
+\begin{definition}[Multiplication]
+  Let \( \cdot : \mathbb{N} \times \mathbb{N} \rightarrow \mathbb{N} \) be the 
+  function that maps \( \cdot(n, m) \) to \( p_n(m) \) for all 
+  \( n, m \in \mathbb{N} \). 
+  We almost always write this using inline notation as \( n \cdot m \) and call 
+  it the \textit{product of} \( n \) \textit{and} \(m\). 
+  \label{definition:multiplication_of_naturals}
+\end{definition}
+
+\paragraph{Preliminary Remark:}
+In an effort to recover some familiar looking calculations we prove the 
+following lemma and theorem.
+
+\begin{lemma}
+  \( n \cdot 1 = n \)
+  \label{lemma:n_times_one}
+\end{lemma}
+
+\begin{proof}
+  \( n \cdot 1 = p_n(1) = n \)
+\end{proof}
+
+\begin{theorem}
+  \( n \cdot (m + 1) = n + (n \cdot m) \)
+\end{theorem}
+
+\begin{proof}
+  \begin{align*}
+    n \cdot (m+1) &= p_n(m+1)  
+                     \text{
+                       by \autoref{definition:multiplication_of_naturals}
+                     } \\
+                  &= p_n(m^{+})
+                     \text{
+                       by \autoref{lemma:n_plus_one}
+                     } \\
+                  &= n + p_n(m)
+                     \text{
+                       by \autoref{%
+                            definition:primitive_multiplication_of_naturals%
+                          }
+                     } \\
+                  &= n + (n \cdot m)
+                     \text{
+                       by \autoref{%
+                            definition:multiplication_of_naturals%
+                          }
+                     } \\
+  \end{align*}
+\end{proof}
 
 \begin{example}
   Recall \autoref{example:successor} once more. We can see that 
   \begin{align*}
-    2 \cdot 3 &= 2 + (2 \cdot 2) \\ 
-              &= 2 + (2 + (2 \cdot 1)) \\ 
-              &= 2 + (2 + 2) \\ 
-              &= 2 + 4 \text{ by \autoref{example:two_plus_two}} \\ 
-              &= (2 + 3)^{+} \\ 
-              &= ((2 + 2)^{+})^{+} \\
-              &= (4^{+})^{+} \text{ by \autoref{example:two_plus_two}} \\
-              &= 6
+    2 \cdot 3 &= 2 \cdot (2 + 1) \\
+              &= 2 + (2 \cdot 2) \\
+              &= 2 + (2 \cdot (1 + 1)) \\
+              &= 2 + (2 + (2 \cdot 1 )) \\
+              &= 2 + (2 + 2) \\
+              &= 2 + 4 \text{ by \autoref{example:two_plus_two}} \\
+              &= 2 + (3 + 1) \\
+              &= (2 + 3) + 1 \\
+              &= (2 + (2 + 1)) + 1 \\
+              &= ((2 + 2) + 1) + 1 \\
+              &= (4 + 1) + 1 \\
+              &= 5 + 1 = 6 
   \end{align*}
 \end{example}
 
