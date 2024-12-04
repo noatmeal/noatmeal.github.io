@@ -6,19 +6,18 @@
   <bibliography citestyle="numbers" xml:id="bib">
     <title/>
     <biblist>
-      <bibentry key="naiiveSet" type="book" xml:id="bib.bib1">
-        <bib-title>Naive set theory</bib-title>
+      <bibentry key="recursion_theorem" type="misc" xml:id="bib.bib1">
         <bib-name role="author">
-          <surname>Halmos</surname>
-          <givenname>Paul R.</givenname>
+          <surname>Noatmeal</surname>
         </bib-name>
-        <bib-date role="publication">1998</bib-date>
-        <bib-publisher>Springer New York, NY</bib-publisher>
-        <bib-data role="self" type="BibTeX">@book{naiiveSet,
-     title = {Naive Set Theory},
-    author = {Paul R. Halmos},
-      year = {1998},
- publisher = {Springer New York, NY}}
+        <bib-title>The Recursion Theorem</bib-title>
+        <bib-note role="publication"><ERROR class="undefined">\url</ERROR>https://noatmeal.github.io/recursion_theorem/</bib-note>
+        <bib-date role="publication">2024</bib-date>
+        <bib-data role="self" type="BibTeX">@misc{recursion_theorem,
+    author = {Noatmeal},
+     title = {{The Recursion Theorem}},
+ howpublished = {\url{https://noatmeal.github.io/recursion_theorem/}},
+      year = {2024}}
 </bib-data>
       </bibentry>
     </biblist>

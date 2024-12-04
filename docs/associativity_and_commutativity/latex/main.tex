@@ -72,7 +72,7 @@
 % Puts you at top of figures in hyperlinks
 \usepackage[all]{hypcap}
 
-\title{Associativity and Commutativity}
+\title{Distributivity, Associativity, and Commutativity}
 \author{\url{https://noatmeal.github.io/}}
 \date{}
 
@@ -80,7 +80,129 @@
 
 \maketitle
 
-\cite{naiiveSet} is \bf{real cool}.
+In \cite{recursion_theorem}, we created some fundamental tools for working with 
+the natural numbers. In this post, we'll establish some of the core ideas that 
+make working with addition and multiplication (as well as many other types of 
+algebraic operations outside of the purview of this post) such a pleasure.
+
+\section{Preliminaries}
+
+We start by recalling the theorems from \cite{recursion_theorem} that restated 
+the definitions of addition and multiplication in algebraic terms where 
+\( n^{+} \) is the image of \( n \in \mathbb{N} \) under the successor function.   
+
+\begin{theorem}
+  \( n + 1 = n^{+} \) where \( n^{+} \) is the image of \( n \in \mathbb{N} \)
+  under the successor function.
+  \label{thm:n_plus_one}
+\end{theorem}
+
+\begin{theorem}
+  \( n + (m + 1) = (n + m) + 1 \)
+  \label{thm:associativity_base_case}
+\end{theorem}
+
+\begin{lemma}
+  \( n \cdot 1 = n \)
+  \label{lemma:n_times_one}
+\end{lemma}
+
+\begin{theorem}
+  \( n \cdot (m + 1) = n + (n \cdot m) \)
+  \label{thm:distributivity_base_case}
+\end{theorem}
+
+
+\subsection{Induction}
+
+It's often easier to work with \autoref{thm:third_peano_axiom} from 
+\cite{recursion_theorem} by restating it in an algebraic form. 
+
+\begin{theorem}[Principle of Mathematical Induction]
+  If \( S \) is an inductive subset of \( \mathbb{N} \), then 
+  \( S = \mathbb{N} \).
+  \label{thm:third_peano_axiom}
+\end{theorem}
+
+\begin{theorem}
+  If \( S \subseteq \mathbb{N} \), \( 1 \in S \), and for all \( n \in S \) it's 
+  the case that \( n + 1 \in S \), then \( S = \mathbb{N} \).
+  \label{thm:restated_peano_axiom}
+\end{theorem}
+
+\begin{proof}
+  Considering the equality between \( n + 1 \) and \( n^{+} \) as stated 
+  in \autoref{thm:n_plus_one}, we can see that \( S \) is an inductive subset
+  of \( \mathbb{N} \) and so the hypothesis of \autoref{thm:third_peano_axiom} 
+  is fulfilled and which leads us to conclude that \( S = \mathbb{N} \).
+\end{proof}
+
+\newpage
+
+\section{A Few ``Nice to Have'' Theorems}
+
+\subsection{Addition}
+
+\begin{theorem}[Associativity of Addition]
+ \( x + ( y + z )  = (x + y) + z \) for all \( x, y, z \in \mathbb{N} \).
+\end{theorem}
+
+\begin{proof}
+  We proceed by induction on \( z \). Let \( S \) be the set of all natural 
+  numbers such that for \( n \in S \) we have \( x + (y + n) = (x + y) + n\). 
+  Well by \autoref{thm:associativity_base_case}, we know that 
+  \( x + (y + 1) = (x + y) + 1 \) and so \( 1 \in S \). So suppose that 
+  \( n \in S \). Using \autoref{thm:associativity_base_case} and our inductive 
+  hypothesis that \( n \in S \), we can see that
+  \begin{align*}
+    x + (y + (n + 1)) &= x + ((y + n) + 1) \\
+                      &= (x + (y + n)) + 1 \\
+                      &= ((x + y) + n) + 1 \\
+                      &= (x + y) + (n + 1)
+  \end{align*}
+  So by \autoref{thm:restated_peano_axiom}, \( S = \mathbb{N} \).
+\end{proof}
+
+\begin{lemma}
+  \( 1 + n = n + 1 \)
+  \label{thm:commutativity_base_case}
+\end{lemma}
+
+\begin{proof}
+  We proceed by induction on \( n \) and let \( S \) be the set of all natural 
+  numbers such that \( 1 + n = n + 1 \). Since \( 1 + 1 = 1 + 1 \) we can see 
+  that \( 1 \in S \). Now let \( n \in S \) and consider \( 1 + (n + 1)\). Well
+  by \autoref{thm:associativity_base_case} and our inductive hypothesis, 
+  \( 1 + (n + 1) = (1 + n) + 1 = (n + 1) + 1 \) and so we conclude that 
+  \( S = \mathbb{N} \).  
+\end{proof}
+
+\begin{theorem}[Commutativity of Addition]
+  \( x + y = y + x \) for all \( x, y \in \mathbb{N} \)  
+\end{theorem}
+
+\begin{proof}
+  We proceed by induction on \( y \) and let \( S \) be the set of all natural 
+  numbers such that \( x + y = y + x \). Our base case of \( 1 \in S \) is 
+  established by \autoref{thm:commutativity_base_case} and so let's assume that 
+  \( n \in S \) and consider \( x + (n + 1) \). Well then using 
+  \autoref{thm:associativity_base_case}, \autoref{thm:commutativity_base_case}, 
+  and our inductive hypothesis, we can see that 
+  \begin{align*}
+    x + (n + 1) &= (x + n) + 1 \\
+                &= (n + x) + 1 \\ 
+                &= n + (x + 1) \\
+                &= n + (1 + x) \\
+                &= (n + 1) + x
+  \end{align*}
+  and so \( S = \mathbb{N} \).
+\end{proof}
+
+\newpage
+
+\subsection{Multiplication}
+
+
 
 \bibliographystyle{plain}
 \bibliography{citations}
