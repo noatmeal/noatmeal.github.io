@@ -145,6 +145,7 @@ It's often easier to work with \autoref{thm:third_peano_axiom} from
 
 \begin{theorem}[Associativity of Addition]
  \( x + ( y + z )  = (x + y) + z \) for all \( x, y, z \in \mathbb{N} \).
+ \label{thm:associativity_of_addition}
 \end{theorem}
 
 \begin{proof}
@@ -178,7 +179,8 @@ It's often easier to work with \autoref{thm:third_peano_axiom} from
 \end{proof}
 
 \begin{theorem}[Commutativity of Addition]
-  \( x + y = y + x \) for all \( x, y \in \mathbb{N} \)  
+  \( x + y = y + x \) for all \( x, y \in \mathbb{N} \) 
+  \label{thm:commutativity_of_addition}
 \end{theorem}
 
 \begin{proof}
@@ -202,7 +204,90 @@ It's often easier to work with \autoref{thm:third_peano_axiom} from
 
 \subsection{Multiplication}
 
+\paragraph{Preliminary Remark:}
+We'll be referring to \( x \cdot y \) as just \( xy \) as well as use 
+\autoref{thm:commutativity_of_addition} and 
+\autoref{thm:associativity_of_addition} without reference throughout these 
+proofs.
 
+\subsection{Distributivity}
+
+\begin{lemma}[Left Distributivity of Multiplication]
+   \( x (y + z) =  xy + zx \) for all \( x, y, z \in \mathbb{N} \).
+   \label{thm:left_distributivity}
+\end{lemma}
+
+\begin{proof}
+  We proceed by induction on \( z \). We use 
+  \autoref{thm:distributivity_base_case} to see that
+  \begin{align*}
+    x(y+1) &= x + xy \\
+           &= xy + x \\
+           &= xy + x \cdot 1   
+  \end{align*}
+  Now suppose that \( x (y + n) = xy + xn \) for \( n \in \mathbb{N} \). We 
+  can see from using our inductive hypothesis and 
+  \autoref{thm:distributivity_base_case} that 
+  \begin{align*}
+    x(y+(n+1)) &= x((y + n) + 1) \\
+               &= x + x(y + n) \\
+               &= x + xy + xn \\
+               &= xy + x + xn \\
+               &= xy + x ( n + 1) \\
+  \end{align*}
+\end{proof}
+
+\begin{lemma}[Right Distributivity of Multiplication]
+  \( (y + z)x = yx + zx \) for all \( x, y, z \in \mathbb{N} \). 
+  \label{thm:right_distributivity}
+\end{lemma}
+
+\begin{proof}
+  We proceed by induction on \( x \). First note that 
+  \( (y + z) \cdot 1 = y + z = y \cdot 1 + z \cdot 1 \). Now assume that 
+  \( (y + z)n = yn + zn \) for some \( n \in \mathbb{N} \). We 
+  can see from using our inductive hypothesis and 
+  \autoref{thm:distributivity_base_case} that 
+  \begin{align*}
+    (y + z)(n+1) &= (y + z) + (y + z)n \\
+                 &= y + z + yn + zn \\
+                 &= y + yn + z + zn \\
+                 &= y(n+1) + z(n+1) 
+  \end{align*}
+\end{proof}
+
+\begin{theorem}[Distributivity of Multiplication]
+  \(x(y + z) = xy + xz \) and \( (y+z)x = yx + zx \) 
+\end{theorem}
+
+\begin{proof}
+  This is established by \autoref{thm:right_distributivity} and
+  \autoref{thm:left_distributivity}. 
+\end{proof}
+
+\subsection{Associativity and Commutativity}
+
+
+\begin{theorem}[Associativity of Multiplication]
+  
+\end{theorem}
+
+\begin{lemma}
+  \( 1 \cdot n = n \cdot 1 \)
+  \label{thm:distributivity_base_case_lemma}
+\end{lemma}
+
+\begin{proof}
+  We proceed by induction on \( n \). Our base case is established by 
+  \( 1 \cdot 1 = 1 \cdot 1\) and so suppose that \( 1 \cdot n = n \cdot 1 \) and
+  consider \( 1 \cdot (n + 1) \). Well by \autoref{thm:distributivity_base_case}
+  we can see that 
+  \( 1 \cdot (n + 1) = 1 + n \cdot 1 = 1 + n = n + 1 = (n + 1) \cdot 1 \).
+\end{proof}
+
+\begin{theorem}[Commutativity of Multiplication]
+  \( xy = yx \) for all \( x, y \in \mathbb{N} \) 
+\end{theorem}
 
 \bibliographystyle{plain}
 \bibliography{citations}
