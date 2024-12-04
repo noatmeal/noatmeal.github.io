@@ -1,0 +1,88 @@
+\documentclass{article}
+
+\usepackage[title]{appendix}
+
+\usepackage{url}
+
+\usepackage{amsmath}
+\usepackage{amssymb}
+
+% For theorems, definitions, etc.
+\usepackage{amsthm}
+
+% For math symbols
+\usepackage{amsmath}
+
+\theoremstyle{definition}
+\newtheorem{definition}{Definition}[section]
+% For autoref so that you don't have to put "thing \ref{label}" every time.
+% Just put "\autoref{label}" and it will put the right thing.
+\newcommand*{\definitionautorefname}{Definition}
+
+\theoremstyle{definition}
+\newtheorem{example}{Example}[section]
+\newcommand*{\exampleautorefname}{Example}
+
+\theoremstyle{plain}
+\newtheorem{aRule}{Rule}[section]
+\newcommand*{\aRuleautorefname}{Rule}
+
+\theoremstyle{remark}
+\newtheorem{convention}{Convention}[section]
+\newcommand*{\conventionautorefname}{Convention}
+
+\theoremstyle{plain}
+\newtheorem{theorem}{Theorem}[section]
+% Doesn't need an autorefname decleration because it's already been made.
+
+\theoremstyle{remark}
+\newtheorem{remark}{Remark}[section]
+\newcommand*{\remarkautorefname}{Remark}
+
+\theoremstyle{plain}
+\newtheorem{lemma}{Lemma}[section]
+\newcommand*{\lemmaautorefname}{Lemma}
+
+\theoremstyle{plain}
+\newtheorem{proposition}{Proposition}[section]
+\newcommand*{\propositionautorefname}{Proposition}
+
+\theoremstyle{plain}
+\newtheorem{axiom}{Axiom}[section]
+\newcommand*{\axiomautorefname}{Axiom}
+
+\theoremstyle{plain}
+\newtheorem{corollary}{Corollary}[section]
+\newcommand*{\corollaryautorefname}{Corollary}
+
+\AtBeginDocument{\def\chapterautorefname{Chapter}}%
+\AtBeginDocument{\def\sectionautorefname{Section}}%
+\AtBeginDocument{\def\subsectionautorefname{Section}}%
+\AtBeginDocument{\def\subsubsectionautorefname{Section}}%
+\AtBeginDocument{\def\paragraphautorefname{Paragraph}}%
+
+
+% For links to use while reading the pdf on a computer. Also provides nice 
+% colors for links.
+\usepackage[unicode]{hyperref}
+\hypersetup{
+    colorlinks=true,
+    linkcolor=blue
+}
+% Puts you at top of figures in hyperlinks
+\usepackage[all]{hypcap}
+
+\title{Associativity and Commutativity}
+\author{\url{https://noatmeal.github.io/}}
+\date{}
+
+\begin{document}
+
+\maketitle
+
+\cite{naiiveSet} is \bf{real cool}.
+
+\bibliographystyle{plain}
+\bibliography{citations}
+
+\end{document}
