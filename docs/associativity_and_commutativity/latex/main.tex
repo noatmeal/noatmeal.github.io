@@ -258,6 +258,7 @@ proofs.
 
 \begin{theorem}[Distributivity of Multiplication]
   \(x(y + z) = xy + xz \) and \( (y+z)x = yx + zx \) 
+  \label{thm:distributivity_of_multiplication}
 \end{theorem}
 
 \begin{proof}
@@ -269,25 +270,51 @@ proofs.
 
 
 \begin{theorem}[Associativity of Multiplication]
-  
+   \(x(yz) = (xy)z\) for all \( x, y, z \in \mathbb{N} \). 
 \end{theorem}
+
+\begin{proof}
+  We proceed by induction on \( z \). Note that 
+  \( x(y \cdot 1 ) = xy = (x y) \cdot 1 \) and suppose that 
+  \( x(yn) = (xy)n \) for some \( n \in \mathbb{N}  \). Well then 
+  by \autoref{thm:distributivity_of_multiplication} and our inductive hypothesis
+  we have that
+  \begin{align*}
+    x(y(n+1)) &= x(yn+y) \\
+              &= x(yn) + xy \\
+              &= (xy)n + xy \\
+              &= (xy)(n+1)
+  \end{align*}
+\end{proof}
 
 \begin{lemma}
   \( 1 \cdot n = n \cdot 1 \)
-  \label{thm:distributivity_base_case_lemma}
+  \label{thm:commutativity_lemma}
 \end{lemma}
 
 \begin{proof}
   We proceed by induction on \( n \). Our base case is established by 
   \( 1 \cdot 1 = 1 \cdot 1\) and so suppose that \( 1 \cdot n = n \cdot 1 \) and
   consider \( 1 \cdot (n + 1) \). Well by \autoref{thm:distributivity_base_case}
-  we can see that 
-  \( 1 \cdot (n + 1) = 1 + n \cdot 1 = 1 + n = n + 1 = (n + 1) \cdot 1 \).
+  and our inductive hypothesis we can see that 
+  \[ 1 \cdot (n + 1) = 1 + n \cdot 1 = 1 + n = n + 1 = (n + 1) \cdot 1 \].
 \end{proof}
 
 \begin{theorem}[Commutativity of Multiplication]
   \( xy = yx \) for all \( x, y \in \mathbb{N} \) 
 \end{theorem}
+
+\begin{proof}
+  We proceed by induction on \( y \) and use \autoref{thm:commutativity_lemma}
+  as our base case. So suppose that \(xn = ny\) for some \( n \in \mathbb{N} \) 
+  and observe that by our inductive hypothesis and 
+  \autoref{thm:distributivity_of_multiplication} we have
+  \begin{align*}
+    x(n+1) &= xn + x \cdot 1 \\
+           &= nx + 1 \cdot x \\
+           &= (n+1)x
+  \end{align*}
+\end{proof}
 
 \bibliographystyle{plain}
 \bibliography{citations}
