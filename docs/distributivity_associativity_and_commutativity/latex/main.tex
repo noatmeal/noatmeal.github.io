@@ -82,14 +82,14 @@
 
 In \cite{recursion_theorem}, we created some fundamental tools for working with 
 the natural numbers. In this post, we'll establish some of the core ideas that 
-make working with addition and multiplication (as well as many other types of 
-algebraic operations outside of the purview of this post) such a pleasure.
+make working with addition and multiplication of the natural numbers such a 
+pleasure.
 
 \section{Preliminaries}
 
 We start by recalling the theorems from \cite{recursion_theorem} that restated 
-the definitions of addition and multiplication in algebraic terms where 
-\( n^{+} \) is the image of \( n \in \mathbb{N} \) under the successor function.   
+the definitions of addition and multiplication of natural numbers in algebraic 
+terms.   
 
 \begin{theorem}
   \( n + 1 = n^{+} \) where \( n^{+} \) is the image of \( n \in \mathbb{N} \)
@@ -115,14 +115,17 @@ the definitions of addition and multiplication in algebraic terms where
 
 \subsection{Induction}
 
-It's often easier to work with \autoref{thm:third_peano_axiom} from 
-\cite{recursion_theorem} by restating it in an algebraic form. 
+Recall the following theorem from \cite{recursion_theorem}. 
 
 \begin{theorem}[Principle of Mathematical Induction]
   If \( S \) is an inductive subset of \( \mathbb{N} \), then 
   \( S = \mathbb{N} \).
   \label{thm:third_peano_axiom}
 \end{theorem}
+
+\paragraph{Preliminary Remark:} 
+It's often easier to work with \autoref{thm:third_peano_axiom} 
+by restating it in an algebraically useful form. 
 
 \begin{theorem}
   If \( S \subseteq \mathbb{N} \), \( 1 \in S \), and for all \( n \in S \) it's 
@@ -134,7 +137,7 @@ It's often easier to work with \autoref{thm:third_peano_axiom} from
   Considering the equality between \( n + 1 \) and \( n^{+} \) as stated 
   in \autoref{thm:n_plus_one}, we can see that \( S \) is an inductive subset
   of \( \mathbb{N} \) and so the hypothesis of \autoref{thm:third_peano_axiom} 
-  is fulfilled and which leads us to conclude that \( S = \mathbb{N} \).
+  is fulfilled which leads us to conclude that \( S = \mathbb{N} \).
 \end{proof}
 
 \newpage
@@ -165,16 +168,16 @@ It's often easier to work with \autoref{thm:third_peano_axiom} from
 \end{proof}
 
 \begin{lemma}
-  \( 1 + n = n + 1 \)
+  \( 1 + n = n + 1 \) for all \( n \in \mathbb{N} \).
   \label{thm:commutativity_base_case}
 \end{lemma}
 
 \begin{proof}
   We proceed by induction on \( n \) and let \( S \) be the set of all natural 
   numbers such that \( 1 + n = n + 1 \). Since \( 1 + 1 = 1 + 1 \) we can see 
-  that \( 1 \in S \). Now let \( n \in S \) and consider \( 1 + (n + 1)\). Well
+  that \( 1 \in S \). Now let \( k \in S \) and consider \( 1 + (k + 1)\). Well
   by \autoref{thm:associativity_base_case} and our inductive hypothesis, 
-  \( 1 + (n + 1) = (1 + n) + 1 = (n + 1) + 1 \) and so we conclude that 
+  \( 1 + (k + 1) = (1 + k) + 1 = (k + 1) + 1 \) and so we conclude that 
   \( S = \mathbb{N} \).  
 \end{proof}
 
@@ -206,14 +209,14 @@ It's often easier to work with \autoref{thm:third_peano_axiom} from
 
 \paragraph{Preliminary Remark:}
 We'll be referring to \( x \cdot y \) as just \( xy \) as well as use 
-\autoref{thm:commutativity_of_addition} and 
-\autoref{thm:associativity_of_addition} without reference throughout these 
-proofs.
+\autoref{thm:commutativity_of_addition}, 
+\autoref{thm:associativity_of_addition}, and \autoref{thm:restated_peano_axiom} 
+without reference throughout these proofs.
 
 \subsection{Distributivity}
 
 \begin{lemma}[Left Distributivity of Multiplication]
-   \( x (y + z) =  xy + zx \) for all \( x, y, z \in \mathbb{N} \).
+   \( x (y + z) =  xy + xz \) for all \( x, y, z \in \mathbb{N} \).
    \label{thm:left_distributivity}
 \end{lemma}
 
@@ -225,7 +228,7 @@ proofs.
            &= xy + x \\
            &= xy + x \cdot 1   
   \end{align*}
-  Now suppose that \( x (y + n) = xy + xn \) for \( n \in \mathbb{N} \). We 
+  Now suppose that \( x (y + n) = xy + xn \) for some \( n \in \mathbb{N} \). We 
   can see from using our inductive hypothesis and 
   \autoref{thm:distributivity_base_case} that 
   \begin{align*}
@@ -257,7 +260,8 @@ proofs.
 \end{proof}
 
 \begin{theorem}[Distributivity of Multiplication]
-  \(x(y + z) = xy + xz \) and \( (y+z)x = yx + zx \) 
+  \(x(y + z) = xy + xz \) and \( (y+z)x = yx + zx \) for all 
+  \( x, y, z \in \mathbb{N} \). 
   \label{thm:distributivity_of_multiplication}
 \end{theorem}
 
@@ -288,16 +292,17 @@ proofs.
 \end{proof}
 
 \begin{lemma}
-  \( 1 \cdot n = n \cdot 1 \)
+  \( 1 \cdot n = n \cdot 1 \) for all \( n \in \mathbb{N} \)
   \label{thm:commutativity_lemma}
 \end{lemma}
 
 \begin{proof}
   We proceed by induction on \( n \). Our base case is established by 
-  \( 1 \cdot 1 = 1 \cdot 1\) and so suppose that \( 1 \cdot n = n \cdot 1 \) and
-  consider \( 1 \cdot (n + 1) \). Well by \autoref{thm:distributivity_base_case}
+  \( 1 \cdot 1 = 1 \cdot 1\) and so suppose that \( 1 \cdot k = k \cdot 1 \)  
+  for some \( k \in \mathbb{N} \) and
+  consider \( 1 \cdot (k + 1) \). Well by \autoref{thm:distributivity_base_case}
   and our inductive hypothesis we can see that 
-  \[ 1 \cdot (n + 1) = 1 + n \cdot 1 = 1 + n = n + 1 = (n + 1) \cdot 1 \].
+  \[ 1 \cdot (k + 1) = 1 + k \cdot 1 = 1 + k = k + 1 = (k + 1) \cdot 1 \]
 \end{proof}
 
 \begin{theorem}[Commutativity of Multiplication]
@@ -307,8 +312,9 @@ proofs.
 \begin{proof}
   We proceed by induction on \( y \) and use \autoref{thm:commutativity_lemma}
   as our base case. So suppose that \(xn = ny\) for some \( n \in \mathbb{N} \) 
-  and observe that by our inductive hypothesis and 
-  \autoref{thm:distributivity_of_multiplication} we have
+  and observe that by our inductive hypothesis, 
+  \autoref{thm:distributivity_of_multiplication}, and 
+  \autoref{thm:commutativity_lemma} we have
   \begin{align*}
     x(n+1) &= xn + x \cdot 1 \\
            &= nx + 1 \cdot x \\
