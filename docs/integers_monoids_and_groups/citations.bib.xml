@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?latexml searchpaths="/home/ryanoatmeal/Projects/noatmeal.github.io/docs/integers_monoids_and_groups/latex"?>
+<?latexml RelaxNGSchema="LaTeXML"?>
+<document xmlns="http://dlmf.nist.gov/LaTeXML">
+  <resource src="LaTeXML.css" type="text/css"/>
+  <bibliography citestyle="numbers" xml:id="bib">
+    <title/>
+    <biblist>
+      <bibentry key="recursion_theorem" type="misc" xml:id="bib.bib1">
+        <bib-name role="author">
+          <surname>Noatmeal</surname>
+        </bib-name>
+        <bib-title>The Recursion Theorem</bib-title>
+        <bib-note role="publication"><ERROR class="undefined">\url</ERROR>https://noatmeal.github.io/recursion_theorem/</bib-note>
+        <bib-date role="publication">2024</bib-date>
+        <bib-data role="self" type="BibTeX">@misc{recursion_theorem,
+    author = {Noatmeal},
+     title = {{The Recursion Theorem}},
+ howpublished = {\url{https://noatmeal.github.io/recursion_theorem/}},
+      year = {2024}}
+</bib-data>
+      </bibentry>
+    </biblist>
+  </bibliography>
+</document>

@@ -19,7 +19,7 @@ repository to generate the corresponding html for the website.
 Where possible, keep your code's column width constrained to 80 characters or 
 below.
 
-Try not to linebreak math delimiters like \(\) unless you absolutely must in 
+Try not to linebreak math delimiters like \\(\\) unless you absolutely must in 
 order to keep the code width below 80 characters.
 
 # Installation Requirements for Contributing
