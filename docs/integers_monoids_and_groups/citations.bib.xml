@@ -20,6 +20,20 @@
       year = {2024}}
 </bib-data>
       </bibentry>
+      <bibentry key="dist_assoc_comm" type="misc" xml:id="bib.bib2">
+        <bib-name role="author">
+          <surname>Noatmeal</surname>
+        </bib-name>
+        <bib-title>Distributivity, Associativity, and Commutativity</bib-title>
+        <bib-note role="publication"><ERROR class="undefined">\url</ERROR>https://noatmeal.github.io/distributivity_associativity_and_commutativity/</bib-note>
+        <bib-date role="publication">2024</bib-date>
+        <bib-data role="self" type="BibTeX">@misc{dist_assoc_comm,
+    author = {Noatmeal},
+     title = {{Distributivity, Associativity, and Commutativity}},
+ howpublished = {\url{https://noatmeal.github.io/distributivity_associativity_and_commutativity/}},
+      year = {2024}}
+</bib-data>
+      </bibentry>
     </biblist>
   </bibliography>
 </document>
