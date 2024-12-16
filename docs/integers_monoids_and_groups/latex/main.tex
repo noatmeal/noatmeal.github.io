@@ -13,6 +13,9 @@
 % For math symbols
 \usepackage{amsmath}
 
+% For drawing stuff!
+\usepackage{tikz}
+
 \theoremstyle{definition}
 \newtheorem{definition}{Definition}[section]
 % For autoref so that you don't have to put "thing \ref{label}" every time.
@@ -80,10 +83,19 @@
 
 \maketitle
 
-In \cite{recursion_theorem}, we created some fundamental tools for working with 
-the natural numbers. In this post, we'll establish some of the core ideas that 
-make working with addition and multiplication of the natural numbers such a 
-pleasure..
+In \cite{recursion_theorem} and \cite{dist_assoc_comm}, we defined and discussed
+some of the fundamental ideas about the natural numbers. In this post we will 
+do the same for the integers and also define some basic algebraic objects in 
+order to house these number systems.
+
+\begin{figure}[h]
+  \begin{center}
+    \begin{tikzpicture}
+      \draw (0,0) -- (2,0) -- (2,2) -- (0,2) -- (0,0);
+    \end{tikzpicture}
+  \end{center}
+  \caption{A Test Tikz Picture}
+\end{figure}
 
 \bibliographystyle{plain}
 \bibliography{citations}
